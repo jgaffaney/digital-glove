@@ -19,7 +19,7 @@ router.post('/begin', (req, res) => {
   INSERT INTO runs ("user_id")
   VALUES ($1);
   `
-  pool.query(queryText, [req.body.user_id])
+  pool.query(queryText, [req.body.id])
     .then(response => {
         res.sendStatus(201)
     }).catch(err => {

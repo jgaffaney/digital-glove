@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import NewCallArrived from '../NewCallArrived/NewCallArrived';
 
 import './App.css';
 
@@ -46,6 +47,12 @@ function App() {
             path="/about"
           >
             <AboutPage />
+          </Route>
+          <Route
+            exact
+            path="/digitalGlove"
+          >
+            <NewCallArrived />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
