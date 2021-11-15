@@ -13,11 +13,13 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/begin', (req, res) => {
+    console.log('req.body is: ', req.body);
+    
   const queryText = `
-  INSERT INTO runs ('user_id')
-  VALUES ($1)
+  INSERT INTO runs ("user_id")
+  VALUES ($1);
   `
-  pool.query(queryText, [req.body])
+  pool.query(queryText, [req.body.user_id])
     .then(response => {
         res.sendStatus(201)
     }).catch(err => {
