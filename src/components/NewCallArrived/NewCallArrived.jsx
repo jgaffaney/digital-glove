@@ -17,14 +17,25 @@ function NewCallArrived() {
         dispatch({type: 'BEGIN_RUN', payload: user, history})
     }
 
+    // if a call cancels or reassigns
+    const handleCancel = () => {
+        history.push('/select')
+    }
+
     return (
         <div>
             <p>New Call</p>
             <Button
                 variant="contained"
                 onClick={handleNewCall}>
-                NEW CALL
+                AT PATIENT
             </Button>
+            <br />
+            <Button 
+                variant='contained'
+                onClick={handleCancel}>
+                    CANCELED/REASSIGNED
+                </Button>
         </div>
 
     )

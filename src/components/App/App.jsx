@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NewCallArrived from '../NewCallArrived/NewCallArrived';
 import MobileCallReviewPage from '../MobileCallReviewPage/MobileCallReviewPage';
+import SelectMode from '../SelectMode/SelectMode';
+import MainMenu from '../MainMenu/MainMenu';
 
 import './App.css';
 
@@ -51,7 +53,7 @@ function App() {
           </Route>
           <Route
             exact
-            path="/digitalGlove"
+            path="/newCall"
           >
             <NewCallArrived />
           </Route>
@@ -91,9 +93,21 @@ function App() {
           </Route>
           <ProtectedRoute
             exact
-            path='/mobileruns'
+            path='/mobileReview'
           >
             <MobileCallReviewPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/select'
+           >
+             <SelectMode />
+          </ProtectedRoute> 
+          <ProtectedRoute
+            exact
+            path='/mainMenu'
+          >
+            <MainMenu />
           </ProtectedRoute>
 
           <Route
