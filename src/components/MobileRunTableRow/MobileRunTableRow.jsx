@@ -3,10 +3,8 @@ import { DateTime } from 'luxon';
 
 function MobileRunTableRow({run}) {
 
-    const dtStart = run.start_timestamp;
-    console.log('run.start_timestamp: ', run.start_timestamp);
-    const humanTime = dtStart.toLocaleString()
-    console.log('humanTime: ', humanTime);
+    const dtStart = DateTime.fromISO(run.start_timestamp)
+    
     return(
         <TableRow 
         key={run.id}
