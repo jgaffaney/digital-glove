@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NewCallArrived from '../NewCallArrived/NewCallArrived';
+import MobileCallReviewPage from '../MobileCallReviewPage/MobileCallReviewPage';
 
 import './App.css';
 
@@ -88,6 +89,12 @@ function App() {
               <LoginPage />
             }
           </Route>
+          <ProtectedRoute
+            exact
+            path='/mobileruns'
+          >
+            <MobileCallReviewPage />
+          </ProtectedRoute>
 
           <Route
             exact

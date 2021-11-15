@@ -17,10 +17,20 @@ function* beginRun(action) {
     }
 }
 
+function* fetchUserRuns(action) {
+    try{
+        const response = yield axios.get(`/api/run/${action.payload.id}`)
+        yield put({type: 'SET_RUNS', payload: response.data})
+    } catch (err) {
+        console.log('Error in fetchUserRuns: ', err);
+    }
+}
+
 
 
 function* runSaga() {
-    yield takeLatest('BEGIN_RUN', beginRun)
+    yield takeLatest('BEGIN_RUN', beginRun);
+    yield takeLatest('FETCH_USER_RUNS', fetchUserRuns)
 }
 
 export default runSaga;
