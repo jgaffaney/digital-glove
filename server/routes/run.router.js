@@ -5,15 +5,27 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+    const id =req.params.id
+    
   // GET route code here
+  const queryText = `
+    SELECT * from runs
+    WHERE "user_id" = $1; 
+  `
+  pool.query(queryText, [id])
+    .then(response => {
+        res.send(response.rows)
+    }).catch(err => {
+        res.sendStatus(500);
+    })
 });
 
 /**
  * POST route template
  */
 router.post('/begin', (req, res) => {
-    console.log('req.body is: ', req.body);
+    console.log('POST req.body is: ', req.body);
     
   const queryText = `
   INSERT INTO runs ("user_id")
