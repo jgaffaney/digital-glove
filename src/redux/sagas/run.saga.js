@@ -2,9 +2,9 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 
-function* beginRun() {
+function* beginRun(action) {
     try{
-        yield axios.post('/api/run/begin')
+        yield axios.post('/api/run/begin', action.payload)
     }catch (err) {
         console.log('Error on beginRun: ', err);
     }
