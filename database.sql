@@ -7,13 +7,13 @@ CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
-    "clearance_level" int NOT NULL);
+    "clearance_level" int);
 
 
 CREATE TABLE "runs" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"start_timestamp" TIMESTAMP NOT NULL,
-	"end_timestamp" TIMESTAMP NOT NULL,
+	"end_timestamp" TIMESTAMP,
 	"user_id" int NOT NULL REFERENCES "user");
 	
 	
