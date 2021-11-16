@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const id =req.params.id
     
   // GET route code here
@@ -24,7 +25,7 @@ router.get('/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/begin', (req, res) => {
+router.post('/begin', rejectUnauthenticated, (req, res) => {
     console.log('POST req.body is: ', req.body);
     
   const queryText = `
@@ -40,7 +41,7 @@ router.post('/begin', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
     DELETE FROM runs
     WHERE id=$1;
