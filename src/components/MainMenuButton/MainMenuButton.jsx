@@ -5,9 +5,15 @@ import { Button } from '@mui/material';
 // pass in a category
 function MainMenuButton({category}) {
 
+     // click handler
+     const handleClick = () => {
+        console.log('Clicked: ', category);
+    }
+
     return (
         <div>
             <Button
+            sx={{width: '200px', height: '75px', mt:'4%', mb:'4%'}}
                 variant="contained"
                 onClick={handleClick}
             >
@@ -16,3 +22,5 @@ function MainMenuButton({category}) {
         </div>
     )
 }
+
+export default MainMenuButton;
