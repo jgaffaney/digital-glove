@@ -14,10 +14,10 @@ function TreatmentButton({ treatment }) {
 
     return (
         <div>
-            <p>Treatment Button</p>
-            <Button 
-                variant='contained' 
-                onClick={handleClick}>{treatment.procedure}</Button>
+            <Button
+                sx={{ width: '130px', height: '60px', justifyContent: '',}}
+                variant='contained'
+                onClick={handleClick}>{treatment}</Button>
         </div>
     )
 }
