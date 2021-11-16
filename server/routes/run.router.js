@@ -30,11 +30,12 @@ router.post('/begin', rejectUnauthenticated, (req, res) => {
     
   const queryText = `
   INSERT INTO runs ("user_id")
-  VALUES ($1);
+  VALUES ($1)
+  RETURNING "id";
   `
   pool.query(queryText, [req.body.id])
     .then(response => {
-        res.sendStatus(201)
+        res.send(response)
     }).catch(err => {
         console.log('Error on begin post: ', err);
         res.sendStatus(500)

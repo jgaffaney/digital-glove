@@ -25,7 +25,7 @@ function TreatmentPage() {
                     {treatments.map(treatment => {
                         return (
                             <Grid key={treatment.id}item xs={5}>
-                                 <TreatmentButton key={treatment.id} treatment={treatment.procedure} />
+                                 <TreatmentButton key={treatment.id} treatment={treatment} />
                             </Grid>
                         )})}
                 </Grid>

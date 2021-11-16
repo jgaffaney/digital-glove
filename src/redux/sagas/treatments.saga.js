@@ -17,7 +17,7 @@ function* fetchTreatments(action) {
 
 function* addTxEvent(action) {
     try {
-        yield axios.post(`/treatment/${action.payload}`)
+        yield axios.post(`/api/treatments/${action.payload.id}`, action.run)
     } catch (error) {
         console.log('Error on addTxEvent: ', error);
         

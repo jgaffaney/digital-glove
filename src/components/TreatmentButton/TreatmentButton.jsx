@@ -1,18 +1,20 @@
 import { Button } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // a reusable component to create a treatment button.  
 // pass in a treatment with at least id and name
 
 function TreatmentButton({ treatment }) {
+    console.log('tx in txbtn: ', treatment);
 
     const dispatch = useDispatch();
+    const run = useSelector(store=>store.currentRun)
 
     // click handler
     const handleClick = () => {
-        console.log(treatment.toLowerCase(), ' clicked');
-        dispatch({type: 'ADD_TX_EVENT', payload: treatment})
+        console.log(treatment.procedure.toLowerCase(), ' clicked');
+        dispatch({type: 'ADD_TX_EVENT', payload: treatment, run})
     }
 
 
@@ -21,7 +23,7 @@ function TreatmentButton({ treatment }) {
             <Button
                 sx={{ width: '130px', height: '60px', justifyContent: '',}}
                 variant='contained'
-                onClick={handleClick}>{treatment}</Button>
+                onClick={handleClick}>{treatment.procedure}</Button>
         </div>
     )
 }
