@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchTreatments(action) {
-    const category = action.payload.category.toLowerCase();
+    const category = action.payload.toLowerCase();
     
     try {
         const response = yield axios.get(`/api/treatments/${category}`);
@@ -15,8 +15,18 @@ function* fetchTreatments(action) {
     }
 }
 
+function* addTxEvent(action) {
+    try {
+        yield axios.post(`/treatment/${action.payload}`)
+    } catch (error) {
+        console.log('Error on addTxEvent: ', error);
+        
+    }
+}
+
 function* treatmentsSaga() {
     yield takeLatest('FETCH_TREATMENTS', fetchTreatments)
+    yield takeLatest('ADD_TX_EVENT', addTxEvent)
 }
 
 export default treatmentsSaga;

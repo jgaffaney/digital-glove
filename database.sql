@@ -32,7 +32,7 @@ CREATE TABLE "runs_events" (
 	"events_id" int NOT NULL REFERENCES "events",
 	"runs_id" int NOT NULL REFERENCES "runs",
 	"timestamp" TIMESTAMP NOT NULL,
-	"comments" varchar(255) NOT NULL);
+	"comments" varchar(255));
 
 
 

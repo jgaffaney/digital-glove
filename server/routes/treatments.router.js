@@ -26,8 +26,14 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
+  const queryText = `
+    INSERT INTO runs_events ("runs_id", "events_id")
+    VALUES($1, $2);
+  `
+  const values = 
+  pool.query(queryText, values)
 });
 
 module.exports = router;
