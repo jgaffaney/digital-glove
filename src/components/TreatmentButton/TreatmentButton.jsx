@@ -4,11 +4,11 @@ import { Button } from '@mui/material';
 // a reusable component to create a treatment button.  
 // pass in a treatment with at least id and name
 
-function TreatmentButton({ event }) {
+function TreatmentButton({ treatment }) {
 
     // click handler
     const handleClick = () => {
-        console.log(event.procedure, ' clicked');
+        console.log(treatment.procedure, ' clicked');
     }
 
 
@@ -17,7 +17,7 @@ function TreatmentButton({ event }) {
             <p>Treatment Button</p>
             <Button 
                 variant='contained' 
-                onClick={handleClick}>{event.procedure}</Button>
+                onClick={handleClick}>{treatment.procedure}</Button>
         </div>
     )
 }

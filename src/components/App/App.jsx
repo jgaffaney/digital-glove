@@ -23,6 +23,7 @@ import NewCallArrived from '../NewCallArrived/NewCallArrived';
 import MobileCallReviewPage from '../MobileCallReviewPage/MobileCallReviewPage';
 import SelectMode from '../SelectMode/SelectMode';
 import MainMenu from '../MainMenu/MainMenu';
+import TreatmentPage from '../TreatmentPage/TreatmentPage';
 
 import './App.css';
 
@@ -108,6 +109,12 @@ function App() {
             path='/mainMenu'
           >
             <MainMenu />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/treatmentPage/:category'
+          >
+            <TreatmentPage />
           </ProtectedRoute>
 
           <Route

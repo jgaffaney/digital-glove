@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import run from './run.reducer'
+import treatments  from './treatments.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -12,7 +13,8 @@ import run from './run.reducer'
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  run // will hold all runs for logged in user
+  run, // will hold all runs for logged in user
+  treatments, // will hold all events available for use
 });
 
 export default rootReducer;
