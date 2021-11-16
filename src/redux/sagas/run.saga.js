@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* beginRun(action) {
     try{
         console.log('action in beginRun: ', action);
-        console.log('action.payload.id: ', action.payload.id);
+        console.log('action.payload.id: ', action.payload);
         
         const currentRun = yield axios.post('/api/run/begin', action.payload);
         console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);

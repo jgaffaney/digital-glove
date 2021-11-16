@@ -14,7 +14,7 @@ function TreatmentButton({ treatment }) {
     // click handler
     const handleClick = () => {
         console.log(treatment.procedure.toLowerCase(), ' clicked');
-        dispatch({type: 'ADD_TX_EVENT', payload: treatment, run})
+        dispatch({type: 'ADD_TX_EVENT', payload: treatment, run: run})
     }
 
 

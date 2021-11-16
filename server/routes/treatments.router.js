@@ -27,15 +27,22 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in post: ', req.body);
+    console.log('req.body in post: ', req);
     
   // POST route code here
   const queryText = `
     INSERT INTO runs_events ("runs_id", "events_id")
     VALUES($1, $2);
   `
-  const values = [req.body, req.params.id]
+  const values = [req.body.run_id, req.params.id]
   pool.query(queryText, values)
+    .then(response => {
+        res.sendStatus(201)
+    }).catch(err=> {
+        console.log('Error on runs_events post: ', err);
+        
+        res.sendStatus(500)
+    })
 });
 
 module.exports = router;
