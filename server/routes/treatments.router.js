@@ -6,12 +6,14 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware')
 /**
  * GET route template
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:category', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in treatmentsRouter get: ', req.params.category);
+    
   const queryText = `
     SELECT * FROM events
     WHERE category=$1;        
   `
-  pool.query(queryText, [req.body])
+  pool.query(queryText, [req.params.category])
     .then(response => {
         console.log('response on tx get: ', response);
         
