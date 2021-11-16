@@ -2,15 +2,15 @@ import { TableRow, TableCell, Button } from '@mui/material';
 import { DateTime } from 'luxon';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-import {useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function MobileRunTableRow({run}) {
 
     // define hook functions
     const dispatch = useDispatch();
+
+    //get user from store
+    const user = useSelector(store=>store.user)
 
     // convert SQL date to readable 
     const dtStart = DateTime.fromISO(run.start_timestamp).toLocaleString(DateTime.DATETIME_SHORT);
@@ -26,7 +26,7 @@ function MobileRunTableRow({run}) {
             icon: 'warning',
         }).then((result) => {
             if(result.isConfirmed) {
-                dispatch({type: 'DELETE_RUN', payload: run.id})
+                dispatch({type: 'DELETE_RUN', payload: run.id, user})
                 MySwal.fire('Your run has been deleted')
             } else {
                 MySwal.fire('Your run has been saved')

@@ -26,11 +26,21 @@ function* fetchUserRuns(action) {
     }
 }
 
+function* deleteRun(action) {
+    try{
+        yield axios.delete(`/api/run/${action.payload}`)
+        yield put({type: 'FETCH_USER_RUNS', payload: action.user})
+    } catch (err) {
+        console.log('Error on delete: ', err);
+        
+    }
+}
 
 
 function* runSaga() {
     yield takeLatest('BEGIN_RUN', beginRun);
-    yield takeLatest('FETCH_USER_RUNS', fetchUserRuns)
+    yield takeLatest('FETCH_USER_RUNS', fetchUserRuns);
+    yield takeLatest('DELETE_RUN', deleteRun)
 }
 
 export default runSaga;
