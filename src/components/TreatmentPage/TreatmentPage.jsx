@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import TreatmentButton from '../TreatmentButton/TreatmentButton';
+import { useEffect } from 'react';
 
 function TreatmentPage() {
 
@@ -11,7 +12,9 @@ function TreatmentPage() {
     // grab events from store
     const treatments = useSelector(store=>store.treatments)
 
-
+    useEffect(() => {
+        dispatch({type: 'FETCH_TREATMENTS', payload: category})
+    })
     return(
         <div>
             {treatments.map(treatment=> {

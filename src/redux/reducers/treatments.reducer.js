@@ -1,6 +1,6 @@
 const treatmentsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_EVENTS':
+        case 'SET_TREATMENTS':
             return action.payload;
         default:
             return state;
