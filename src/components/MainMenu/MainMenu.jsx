@@ -1,4 +1,4 @@
-import { Button } from 
+import { Button } from '@mui/material';
 
 function MainMenu() {
     return (

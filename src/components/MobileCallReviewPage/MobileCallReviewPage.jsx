@@ -27,7 +27,6 @@ function MobileCallReviewPage() {
                         <TableRow>
                             <TableCell align="right">Run Number</TableCell>
                             <TableCell align="right">Start Date/Time</TableCell>
-                            <TableCell align="right">End Date/Time</TableCell>
                             <TableCell align="right"></TableCell>
                             <TableCell align="right"></TableCell>
                         </TableRow>
