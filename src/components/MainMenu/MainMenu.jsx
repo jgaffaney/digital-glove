@@ -19,7 +19,7 @@ function MainMenu() {
                         <MainMenuButton category='Access'/>
                     </Grid>
                     <Grid sx={{justifyContent: 'center', m:'auto'}} item xs={10}>
-                        <MainMenuButton category='Medications'/>
+                        <MainMenuButton category='Medication'/>
                     </Grid>
                 </Grid>
             </Box>
