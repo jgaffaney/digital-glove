@@ -50,11 +50,23 @@ function* fetchCurrentRun(action) {
     }
 }
 
+function* endCall(action) {
+    console.log('action in endCall: ', action);
+    
+    try {
+        yield axios.put(`/api/run/${action.payload}`);
+        yield put({type: 'CLEAR_CURRENT_RUN'})
+    } catch (error) {
+        console.log('Error on endCall: ', error);
+    }
+}
+
 function* runSaga() {
     yield takeLatest('BEGIN_RUN', beginRun);
     yield takeLatest('FETCH_USER_RUNS', fetchUserRuns);
     yield takeLatest('DELETE_RUN', deleteRun);
     yield takeLatest('FETCH_CURRENT_RUN', fetchCurrentRun)
+    yield takeLatest('END_CALL', endCall)
 }
 
 export default runSaga;

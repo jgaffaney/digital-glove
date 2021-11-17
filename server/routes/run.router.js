@@ -1,25 +1,25 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const id =req.params.id
-    
-  // GET route code here
-  const queryText = `
+    const id = req.params.id
+
+    // GET route code here
+    const queryText = `
     SELECT * from runs
     WHERE "user_id" = $1; 
   `
-  pool.query(queryText, [id])
-    .then(response => {
-        res.send(response.rows)
-    }).catch(err => {
-        res.sendStatus(500);
-    })
+    pool.query(queryText, [id])
+        .then(response => {
+            res.send(response.rows)
+        }).catch(err => {
+            res.sendStatus(500);
+        })
 });
 
 /**
@@ -27,19 +27,19 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
  */
 router.post('/begin', rejectUnauthenticated, (req, res) => {
     console.log('POST req.body is: ', req.body);
-    
-  const queryText = `
+
+    const queryText = `
   INSERT INTO runs ("user_id")
   VALUES ($1)
   RETURNING "id";
   `
-  pool.query(queryText, [req.body.id])
-    .then(response => {
-        res.send(response)
-    }).catch(err => {
-        console.log('Error on begin post: ', err);
-        res.sendStatus(500)
-    })
+    pool.query(queryText, [req.body.id])
+        .then(response => {
+            res.send(response)
+        }).catch(err => {
+            console.log('Error on begin post: ', err);
+            res.sendStatus(500)
+        })
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
@@ -85,4 +85,22 @@ router.put('/currentRun', (req, res) => {
             res.sendStatus(500)
         })
 })
+
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.params.id in endcall put: ', req.params.id);
+    
+    const queryText = `
+    UPDATE runs
+    SET end_timestamp = LOCALTIMESTAMP
+    WHERE id = $1;
+    `
+    pool.query(queryText, [req.params.id])
+        .then(response => {
+            res.sendStatus(204)
+        }).catch(err => {
+            console.log('Error on end run: ', err);
+            res.sendStatus(500)
+        })
+})
+
 module.exports = router;
