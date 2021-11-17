@@ -24,8 +24,17 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 router.get('/details/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
-    
+    SELECT "events".procedure, "timestamp" FROM "runs_events"
+    JOIN "events" ON "events".id = "runs_events".events_id
+    WHERE "runs_events".runs_id = $1;
     `
+    pool.query(queryText, [req.params.id])
+        .then(response => {
+            res.send(response.rows)
+        }).catch(err => {
+            console.log('Error on get/details: ', err);
+            res.sendStatus(500)
+        })
 })
 
 /**
