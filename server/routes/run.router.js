@@ -22,6 +22,12 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    
+    `
+})
+
 /**
  * POST route template
  */

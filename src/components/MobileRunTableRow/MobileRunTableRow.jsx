@@ -33,6 +33,10 @@ function MobileRunTableRow({run}) {
             }
         })
     }
+
+    const handleEdit = () => {
+        
+    }
     
     return(
         <TableRow 
@@ -40,7 +44,7 @@ function MobileRunTableRow({run}) {
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell align="right">{run.id}</TableCell>
             <TableCell align="right">{dtStart}</TableCell>
-            <TableCell><Button>Edit</Button></TableCell>
+            <TableCell><Button onClick={handleEdit}>Edit</Button></TableCell>
             <TableCell><Button onClick={handleDelete}>Delete</Button></TableCell>
         </TableRow>
     )

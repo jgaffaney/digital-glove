@@ -50,6 +50,16 @@ function* fetchCurrentRun(action) {
     }
 }
 
+function* fetchCurrentRunDetails(action) {
+    try {
+        const response = yield axios.get(`/api/run/details/${action.payload}`)
+        yield put({type: 'SET_CURRENT_RUN_DETAILS', payload: response.data})
+    } catch (error) {
+        console.log('Error on fetchCurrentRunDetails: ', error);
+        
+    }
+}
+
 function* endCall(action) {
     console.log('action in endCall: ', action);
     
@@ -66,6 +76,7 @@ function* runSaga() {
     yield takeLatest('FETCH_USER_RUNS', fetchUserRuns);
     yield takeLatest('DELETE_RUN', deleteRun);
     yield takeLatest('FETCH_CURRENT_RUN', fetchCurrentRun)
+    yield takeLatest('FETCH_CURRENT_RUN_DETAILS', fetchCurrentRunDetails)
     yield takeLatest('END_CALL', endCall)
 }
 

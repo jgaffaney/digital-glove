@@ -26,6 +26,7 @@ import MainMenu from '../MainMenu/MainMenu';
 import TreatmentPage from '../TreatmentPage/TreatmentPage';
 
 import './App.css';
+import MobileRunDetailsPage from '../MobileRunDetailsPage/MobileRunDetailsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -116,6 +117,11 @@ function App() {
             path='/treatmentPage/:category'
           >
             <TreatmentPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/mobileReview/:run'>
+              <MobileRunDetailsPage />
           </ProtectedRoute>
 
           <Route
