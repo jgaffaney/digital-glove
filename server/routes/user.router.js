@@ -25,8 +25,20 @@ router.post('/register', (req, res, next) => {
     VALUES ($1, $2, $3) RETURNING id`;
   pool
     .query(queryText, [username, password, 0])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
+    .then(response => {
+      console.log('response from register post: ', response.rows);
+      const newUserId = response.rows.id
+      const newQueryText = `
+      INSERT INTO currentRun (user_id)
+      VALUES $1
+      `
+      pool.query(newQueryText, [newUserId])
+        .then(response => {
+          res.sendStatus(201)
+        }).catch(err => {
+          res.sendStatus(500)
+        })
+    }).catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);
     });
