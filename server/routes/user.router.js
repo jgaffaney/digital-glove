@@ -20,7 +20,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-
   const queryText = `INSERT INTO "user" (username, password, clearance_level)
     VALUES ($1, $2, $3) RETURNING id`;
   pool

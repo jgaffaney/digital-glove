@@ -13,8 +13,8 @@ function* beginRun(action) {
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0].id})
         const response = yield axios.get(`/api/run/${action.payload.id}`)
         console.log('response.data: ', response.data);
-        
         yield put({type: 'SET_RUNS', payload: response.data})
+        action.history.push('/mainMenu')
     }catch (err) {
         console.log('Error on beginRun: ', err);
     }
