@@ -56,4 +56,32 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         })
 })
 
+router.get('/currentRun', (req, res) => {
+    const queryText = `
+    SELECT * FROM currentRun
+    ORDER BY currentRun DESC
+    LIMIT 1;
+    `
+    pool.query(queryText)
+        .then(response => {
+            res.send(response.rows)
+        }).catch(err => {
+            console.log('Error on get currentRun: ', err);
+            res.sendStatus(500)
+        })
+})
+
+router.put('/currentRun', (req, res) => {
+    const queryText = `
+    UPDATE currentRun
+    SET "currentRun" = $1;
+    `
+    pool.query(queryText, [req.body])
+        .then(response => {
+            res.sendStatus(200)
+        }).catch(err => {
+            console.log('error on currentRun put: ', err);
+            res.sendStatus(500)
+        })
+})
 module.exports = router;

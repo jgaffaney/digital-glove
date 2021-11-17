@@ -9,7 +9,7 @@ function* beginRun(action) {
         
         const currentRun = yield axios.post('/api/run/begin', action.payload);
         console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
-        
+        yield axios.put('/api/run/currentRun', currentRun.data.rows[0].id)
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0].id})
         const response = yield axios.get(`/api/run/${action.payload.id}`)
         console.log('response.data: ', response.data);
@@ -39,11 +39,22 @@ function* deleteRun(action) {
     }
 }
 
+function* fetchCurrentRun(action) {
+    try {
+        const response = yield axios.get('/api/run/currentRun')
+        console.log('response in fetchCurrentRun: ', response);
+        
+        yield put({type: 'SET_CURRENT_RUN', payload: response.data})
+    } catch (error) {
+        console.log('Error on fetchCurrentRun: ', error);
+    }
+}
 
 function* runSaga() {
     yield takeLatest('BEGIN_RUN', beginRun);
     yield takeLatest('FETCH_USER_RUNS', fetchUserRuns);
-    yield takeLatest('DELETE_RUN', deleteRun)
+    yield takeLatest('DELETE_RUN', deleteRun);
+    yield takeLatest('FETCH_CURRENT_RUN', fetchCurrentRun)
 }
 
 export default runSaga;

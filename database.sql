@@ -34,7 +34,9 @@ CREATE TABLE "runs_events" (
 	"timestamp" TIMESTAMP NOT NULL,
 	"comments" varchar(255));
 
-
+CREATE TABLE currentRun (
+	"id" SERIAL PRIMARY KEY,
+	"currentRun" INT DEFAULT 0);
 
 
 

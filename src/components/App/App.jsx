@@ -34,6 +34,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    dispatch({type: 'FETCH_CURRENT_RUN'});
   }, [dispatch]);
 
   return (
