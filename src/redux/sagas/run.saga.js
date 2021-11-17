@@ -9,7 +9,7 @@ function* beginRun(action) {
         
         const currentRun = yield axios.post('/api/run/begin', action.payload);
         console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
-        yield axios.put('/api/run/currentRun', currentRun.data.rows[0].id)
+        yield axios.put('/api/run/currentRun', {run_id: currentRun.data.rows[0].id})
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0].id})
         const response = yield axios.get(`/api/run/${action.payload.id}`)
         console.log('response.data: ', response.data);

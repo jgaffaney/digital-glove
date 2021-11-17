@@ -74,9 +74,10 @@ router.get('/currentRun', (req, res) => {
 router.put('/currentRun', (req, res) => {
     const queryText = `
     UPDATE currentRun
-    SET "currentRun" = $1;
+    SET "currentRun" = $1
+    WHERE user_id = $2;
     `
-    pool.query(queryText, [req.body])
+    pool.query(queryText, [req.body.run_id, req.user.id])
         .then(response => {
             res.sendStatus(200)
         }).catch(err => {
