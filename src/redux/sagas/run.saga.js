@@ -61,7 +61,7 @@ function* fetchCurrentRunDetails(action) {
     }
 }
 
-function* fetchEditRunDetails(action) {
+function* fetchEditRun(action) {
     try {
         const response = yield axios.get(`/api/run/details/${action.payload}`)
         yield put({type: 'SET_EDIT_RUN', payload: response.data})

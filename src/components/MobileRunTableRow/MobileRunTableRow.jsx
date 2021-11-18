@@ -35,7 +35,7 @@ function MobileRunTableRow({run}) {
     }
 
     const handleEdit = () => {
-        
+        dispatch({type: 'FETCH_EDIT_RUN', payload: run.id})
     }
     
     return(
