@@ -8,7 +8,9 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <p>Digital Glove is an easy to user interface to log timestamps of treatment events by paramedics during the course of a cardiac arrest</p>
+      <br />
+      <p>Digital Glove seeks to improve accuracy of data collection to improve research and patient outcomes in cardiac arrest.</p>
     </div>
   );
 }

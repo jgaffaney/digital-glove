@@ -1,10 +1,13 @@
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function SelectMode() {
 
     // declare hook functions
     const history = useHistory();
+    const dispatch = useDispatch();
 
     // start a new call
     const handleNew = () => {
@@ -15,6 +18,10 @@ function SelectMode() {
     const handleReview = () => {
         history.push('/mobileReview')
     }
+
+    useEffect(() => {
+        dispatch({type: 'FETCH_CURRENT_RUN'})
+    })
 
     return (
         <div>

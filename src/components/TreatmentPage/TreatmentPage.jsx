@@ -16,7 +16,6 @@ function TreatmentPage() {
 
     // grab events from store
     const treatments = useSelector(store => store.treatments)
-    const pageCategory = category.category
     console.log('txs in txpage:', treatments);
     useEffect(() => {
         dispatch({ type: 'FETCH_TREATMENTS', payload: category.category })

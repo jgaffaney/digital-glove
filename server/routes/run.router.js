@@ -74,10 +74,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 router.get('/currentRun', (req, res) => {
     const queryText = `
     SELECT * FROM currentRun
-    ORDER BY currentRun DESC
-    LIMIT 1;
+    WHERE user-id = $1
     `
-    pool.query(queryText)
+    pool.query(queryText, [req.user.id])
         .then(response => {
             res.send(response.rows)
         }).catch(err => {
