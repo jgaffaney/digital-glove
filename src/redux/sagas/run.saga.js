@@ -50,26 +50,26 @@ function* fetchCurrentRun(action) {
     }
 }
 
-function* fetchCurrentRunDetails(action) {
+function* fetchRunDetails(action) {
     try {
         const response = yield axios.get(`/api/run/details/${action.payload}`)
-        yield put({type: 'SET_CURRENT_RUN_DETAILS', payload: response.data})
+        yield put({type: 'SET_RUN_DETAILS', payload: response.data})
         action.history.push(`/mobileReview/${action.payload}`);
     } catch (error) {
-        console.log('Error on fetchCurrentRunDetails: ', error);
+        console.log('Error on fetchRunDetails: ', error);
         
     }
 }
 
-function* fetchEditRun(action) {
-    try {
-        const response = yield axios.get(`/api/run/details/${action.payload}`)
-        yield put({type: 'SET_EDIT_RUN', payload: response.data})
-        action.history.push(`/mobileReview/${action.payload}`);
-    } catch (error) {
-        console.log('Error on fetchEditRunDetails: ', error);
-    }
-}
+// function* fetchEditRun(action) {
+//     try {
+//         const response = yield axios.get(`/api/run/details/${action.payload}`)
+//         yield put({type: 'SET_EDIT_RUN', payload: response.data})
+//         action.history.push(`/mobileReview/${action.payload}`);
+//     } catch (error) {
+//         console.log('Error on fetchEditRunDetails: ', error);
+//     }
+// }
 
 function* endCall(action) {
     console.log('action in endCall: ', action);
@@ -77,6 +77,7 @@ function* endCall(action) {
     try {
         yield axios.put(`/api/run/${action.payload}`);
         yield put({type: 'CLEAR_CURRENT_RUN'})
+        action.history.push('/select');
     } catch (error) {
         console.log('Error on endCall: ', error);
     }
@@ -87,8 +88,8 @@ function* runSaga() {
     yield takeLatest('FETCH_USER_RUNS', fetchUserRuns);
     yield takeLatest('DELETE_RUN', deleteRun);
     yield takeLatest('FETCH_CURRENT_RUN', fetchCurrentRun)
-    yield takeLatest('FETCH_CURRENT_RUN_DETAILS', fetchCurrentRunDetails)
-    yield takeLatest('FETCH_EDIT_RUN', fetchEditRun)
+    yield takeLatest('FETCH_RUN_DETAILS', fetchRunDetails)
+    // yield takeLatest('FETCH_EDIT_RUN', fetchEditRun)
     yield takeLatest('END_CALL', endCall)
 }
 

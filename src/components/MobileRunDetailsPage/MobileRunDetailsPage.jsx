@@ -4,14 +4,25 @@ import {
     TableContainer, Table, TableCell, TableHead,
     TableRow, TableBody, Paper, Box
 } from '@mui/material';
+import { useParams } from 'react-router';
 
 
 function MobileRunDetailsPage() {
 
     const dispatch = useDispatch();
 
-    const runDetails = useSelector(store => store.currentDetails)
+    const run = useSelector(store => store.runDetails)
+    const runNumber = useParams();
 
+    // const findRun = () => {
+    //     for(run of runs) {
+    //         if(run.id == runNumber) {
+    //             return run
+    //         }
+    //     }
+    // }
+
+    // const run = findRun();
 
     return (
         <div>
@@ -27,7 +38,7 @@ function MobileRunDetailsPage() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {runDetails?.map((item, i) => (
+                            {run?.map((item, i) => (
                                 <MobileRunDetailsItem key={i} item={item} />
                             ))}
                         </TableBody>

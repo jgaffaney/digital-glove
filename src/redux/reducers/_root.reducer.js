@@ -4,8 +4,8 @@ import user from './user.reducer';
 import run from './run.reducer'
 import treatments  from './treatments.reducer';
 import currentRun from './currentRun.reducer';
-import currentDetails from './currentRunDetails.reducer';
-import editRunDetails from './editRunDetails.reducer';
+// import currentDetails from './currentRunDetails.reducer';
+import runDetails from './runDetails.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,8 +19,8 @@ const rootReducer = combineReducers({
   run, // will hold all runs for logged in user
   treatments, // will hold all events available for use
   currentRun, // will hold the current run if there is one
-  currentDetails, // will hold all the details for the current run
-  editRunDetails, // will hold all the details for the run being reviewed.
+  // currentDetails, // will hold all the details for the current run
+  runDetails, // will hold all the details for the run being reviewed.
 });
 
 export default rootReducer;

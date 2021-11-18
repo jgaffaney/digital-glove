@@ -32,7 +32,7 @@ function MobileCallReviewPage() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {runs.map(run => (
+                        {runs?.map(run => (
                             <MobileRunTableRow key={run.id} run={run} />
                         ))}
                     </TableBody>

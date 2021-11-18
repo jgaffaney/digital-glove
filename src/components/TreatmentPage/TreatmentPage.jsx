@@ -23,7 +23,7 @@ function TreatmentPage() {
     return (
         <div>
             <Box sx={{ flexGrow: 1, width: '90%' }}>
-                <Button onClick={() => {history.push('/mainMenu')}}>Back</Button>
+                <Button onClick={() => history.goBack()}>Back</Button>
             </Box>
             <Box sx={{ flexGrow: 1, width: '90%' }}>
                 <Grid container spacing={2} sx={{ m: '2%', justifyContent: 'center' }}>
