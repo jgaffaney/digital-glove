@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import TreatmentButton from '../TreatmentButton/TreatmentButton';
 import { useEffect } from 'react';
 import { Box, Grid, Button } from '@mui/material';
@@ -9,6 +9,7 @@ import EndCallButton from '../EndCallButton/EndCallButton';
 function TreatmentPage() {
 
     // declare hook functions
+    const history = useHistory();
     const dispatch = useDispatch();
     const category = useParams();
     console.log('cat in txpage: ', category.category);
@@ -23,7 +24,7 @@ function TreatmentPage() {
     return (
         <div>
             <Box sx={{ flexGrow: 1, width: '90%' }}>
-                <Button>Back</Button>
+                <Button onClick={() => {history.push('/mainMenu')}}>Back</Button>
             </Box>
             <Box sx={{ flexGrow: 1, width: '90%' }}>
                 <Grid container spacing={2} sx={{ m: '2%', justifyContent: 'center' }}>
