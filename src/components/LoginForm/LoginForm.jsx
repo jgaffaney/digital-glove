@@ -21,7 +21,6 @@ function LoginForm() {
           password: password,
         },
       })
-      history.push('/select')
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }

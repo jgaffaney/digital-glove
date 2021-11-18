@@ -1,7 +1,10 @@
 import { TableCell, TableRow, Button } from '@mui/material';
 import { DateTime } from 'luxon';
+import { useDispatch } from 'react-redux';
 
 function MobileRunDetailsItem({ item }) {
+
+    const dispatch = useDispatch();
 
     const handleEdit = () => {
         console.log('Edit Clicked');
