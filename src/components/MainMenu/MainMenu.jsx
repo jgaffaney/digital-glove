@@ -13,7 +13,7 @@ function MainMenu() {
                         <MainMenuButton category='Airway'/>
                     </Grid>
                     <Grid sx={{justifyContent: 'center', m:'auto'}} item xs={10}>
-                        <MainMenuButton category='CPR'/>
+                        <MainMenuButton category='Chest'/>
                     </Grid>
                     <Grid sx={{justifyContent: 'center', m:'auto'}} item xs={10}>
                         <MainMenuButton category='Access'/>

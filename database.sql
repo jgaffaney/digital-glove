@@ -17,7 +17,7 @@ CREATE TABLE "runs" (
 	"user_id" int NOT NULL REFERENCES "user");
 	
 	
-CREATE TYPE category as ENUM('airway', 'cpr', 'access', 'medication');
+CREATE TYPE category as ENUM('airway', 'chest', 'access', 'medication');
 
 
 CREATE TABLE "events" (
@@ -38,7 +38,43 @@ CREATE TABLE currentRun (
 	"id" SERIAL PRIMARY KEY,
 	"currentRun" INT DEFAULT 0);
 
-
+INSERT INTO events ("category", "procedure")
+VALUES ('chest', 'Chest Compressions'),
+('airway', 'ResQPod'),
+('airway', 'OPA'),
+('airway', 'NPA'),
+('airway', 'BVM Ventilations'),
+('airway', 'Oxygen'),
+('medication', 'Normal Saline'),
+('medication', 'Sodium Biocarb'),
+('chest', 'SPEAR decompression'),
+('medication', 'Calcium Chloride'),
+('medication', 'Narcan'),
+('medication', 'D50'),
+('airway', 'Suction'),
+('access', 'IV L AC'),
+('access', 'IV R AC'),
+('access', 'IV L Forearm'),
+('access', 'IV R Forearm'),
+('access', 'IO R Tibia'),
+('access', 'IO L Tibia'),
+('access', 'IO R Humerus'),
+('access', 'IO L Humerous'),
+('access', 'IO Other Location'),
+('access', 'IV Other Location'),
+('medication', 'Epinepherine'),
+('chest', 'Defibrilation'),
+('chest', 'Synchronized Cardioversion'),
+('chest', 'Rythmn/Pulse Check'),
+('chest', 'ResQPump'),
+('medication', 'Amiodorone'),
+('medication', 'Lidocaine'),
+('medication', 'Magnesium'),
+('airway', 'ET Intubation'),
+('airway', 'I-Gel'),
+('airway', 'Airway Verification'),
+('chest', 'LUCAS compressions'),
+('chest', 'Elegard'),
 
 
 
