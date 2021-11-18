@@ -22,13 +22,13 @@ function MobileCallReviewPage() {
         <div>
             <h1>Mobile Call Review</h1>
             <TableContainer component={Paper}>
-                <Table aria-label="simple table">
+                <Table width='90%' aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="right">Run Number</TableCell>
-                            <TableCell align="right">Start Date/Time</TableCell>
-                            <TableCell align="right"></TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell width='20%' align="center">Run Number</TableCell>
+                            <TableCell width='20%' align="center">Start Date/Time</TableCell>
+                            <TableCell width='20%' align="center"></TableCell>
+                            <TableCell width='20%' align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

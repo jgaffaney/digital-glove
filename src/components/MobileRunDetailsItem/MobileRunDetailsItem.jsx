@@ -14,15 +14,13 @@ function MobileRunDetailsItem({ item }) {
     const dtEvent = DateTime.fromISO(item.timestamp).toLocaleString(DateTime.DATETIME_SHORT);
 
     return (
-        <div>
-            <TableRow
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell align="right">{item.procedure}</TableCell>
-                <TableCell align="right">{dtEvent}</TableCell>
-                <TableCell><Button onClick={handleEdit}>Edit</Button></TableCell>
-                <TableCell><Button onClick={handleDelete}>Delete</Button></TableCell>
-            </TableRow>
-        </div>
+        <TableRow
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell width='20%' align="center">{item.procedure}</TableCell>
+            <TableCell width='20%' align="center">{dtEvent}</TableCell>
+            <TableCell width='15%'><Button onClick={handleEdit}>Edit</Button></TableCell>
+            <TableCell width='15%'><Button onClick={handleDelete}>Delete</Button></TableCell>
+        </TableRow>
     )
 }
 

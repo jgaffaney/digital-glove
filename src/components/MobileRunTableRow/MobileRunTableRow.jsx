@@ -42,10 +42,10 @@ function MobileRunTableRow({run}) {
         <TableRow 
         key={run.id}
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell align="right">{run.id}</TableCell>
-            <TableCell align="right">{dtStart}</TableCell>
-            <TableCell><Button onClick={handleEdit}>Edit</Button></TableCell>
-            <TableCell><Button onClick={handleDelete}>Delete</Button></TableCell>
+            <TableCell width='20%' align="center">{run.id}</TableCell>
+            <TableCell width='20%' align="center">{dtStart}</TableCell>
+            <TableCell width='15%'><Button onClick={handleEdit}>Edit</Button></TableCell>
+            <TableCell width='15%'><Button onClick={handleDelete}>Delete</Button></TableCell>
         </TableRow>
     )
 }
