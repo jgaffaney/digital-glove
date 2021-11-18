@@ -10,7 +10,7 @@ function ReviewTreatmentButton() {
     const run = useSelector(store=>store.currentRun)
 
     const handleClick = () => {
-        console.log('Revew TX clicked');
+        console.log('Review TX clicked');
         dispatch({type: 'FETCH_CURRENT_RUN_DETAILS', payload: run, history: history})
     }
 

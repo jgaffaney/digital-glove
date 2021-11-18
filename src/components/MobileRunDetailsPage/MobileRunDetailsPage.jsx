@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import MobileRunDetailsItem from '../MobileRunDetailsItem/MobileRunDetailsItem';
-import { TableContainer, Table, TableContainer, TableCell, TableHead, TableRow} from '@mui/material';
+import { TableContainer, Table, TableCell, TableHead, 
+            TableRow, TableBody, Paper } from '@mui/material';
 
 
 function MobileRunDetailsPage() {

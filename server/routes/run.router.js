@@ -102,7 +102,7 @@ router.put('/currentRun', (req, res) => {
 })
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.params.id in endcall put: ', req.params.id);
+    console.log('req.params.id in endCall put: ', req.params.id);
     
     const queryText = `
     UPDATE runs
