@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import MobileRunDetailsItem from '../MobileRunDetailsItem/MobileRunDetailsItem';
 import {
     TableContainer, Table, TableCell, TableHead,
-    TableRow, TableBody, Paper, Box
+    TableRow, TableBody, Paper, Box, Button
 } from '@mui/material';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
 
 function MobileRunDetailsPage() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const run = useSelector(store => store.runDetails)
     const runNumber = useParams();
@@ -27,6 +28,7 @@ function MobileRunDetailsPage() {
     return (
         <div>
             <h1>Run Details</h1>
+                <Button onClick={() => history.goBack()}>BACK</Button>
                 <TableContainer component={Paper}>
                     <Table width='90%' aria-label="simple table">
                         <TableHead>

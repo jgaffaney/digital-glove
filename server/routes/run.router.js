@@ -13,7 +13,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT * from runs
     WHERE "user_id" = $1
-    ORDER BY id DESC;
+    ORDER BY start_timestamp DESC;
   `
     pool.query(queryText, [id])
         .then(response => {

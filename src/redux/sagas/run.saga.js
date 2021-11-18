@@ -51,6 +51,8 @@ function* fetchCurrentRun(action) {
 }
 
 function* fetchRunDetails(action) {
+    console.log('action in fetchRunDetails: ', action);
+    
     try {
         const response = yield axios.get(`/api/run/details/${action.payload}`)
         yield put({type: 'SET_RUN_DETAILS', payload: response.data})

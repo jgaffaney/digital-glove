@@ -3,11 +3,13 @@ import { DateTime } from 'luxon';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 function MobileRunTableRow({run}) {
 
     // define hook functions
     const dispatch = useDispatch();
+    const history = useHistory();
 
     //get user from store
     const user = useSelector(store=>store.user)
@@ -35,7 +37,7 @@ function MobileRunTableRow({run}) {
     }
 
     const handleEdit = () => {
-        dispatch({type: 'FETCH_RUN_DETAILS', payload: run.id})
+        dispatch({type: 'FETCH_RUN_DETAILS', payload: run.id, history: history})
     }
     
     return(
