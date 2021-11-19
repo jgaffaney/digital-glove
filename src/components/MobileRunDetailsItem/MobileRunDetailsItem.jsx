@@ -19,10 +19,10 @@ function MobileRunDetailsItem({ item }) {
     return (
         <TableRow
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell width='20%' align="center">{item.procedure}</TableCell>
-            <TableCell width='20%' align="center">{dtEvent}</TableCell>
-            <TableCell width='15%'><Button onClick={handleEdit}>Edit</Button></TableCell>
-            <TableCell width='15%'><Button onClick={handleDelete}>Delete</Button></TableCell>
+            <TableCell width='75px' align="center">{item.procedure}</TableCell>
+            <TableCell width='75px' align="center">{dtEvent}</TableCell>
+            <TableCell width='75px'><Button onClick={handleEdit}>Edit</Button></TableCell>
+            <TableCell width='75px'><Button onClick={handleDelete}>Delete</Button></TableCell>
         </TableRow>
     )
 }

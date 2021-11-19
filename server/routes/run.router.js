@@ -27,7 +27,8 @@ router.get('/details/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT "events".procedure, "timestamp" FROM "runs_events"
     JOIN "events" ON "events".id = "runs_events".events_id
-    WHERE "runs_events".runs_id = $1;
+    WHERE "runs_events".runs_id = $1
+    ORDER BY "runs_events".timestamp;
     `
     pool.query(queryText, [req.params.id])
         .then(response => {

@@ -33,10 +33,10 @@ function MobileRunDetailsPage() {
                     <Table width='90%' aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell width='20%' align="center">Treatment</TableCell>
-                                <TableCell width='20%' align="center">TX Time</TableCell>
-                                <TableCell width='15%' align="center"></TableCell>
-                                <TableCell width='15%' align="center"></TableCell>
+                                <TableCell width='75px' align="center">Treatment</TableCell>
+                                <TableCell width='75px' align="center">TX Time</TableCell>
+                                <TableCell width='75px' align="center"></TableCell>
+                                <TableCell width='75px' align="center"></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
