@@ -60,4 +60,18 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    DELETE FROM "runs_events"
+    WHERE id = $1;
+    `
+    pool.query(queryText, [req.params.id])
+        .then(response => {
+            res.sendStatus(204)
+        }).catch( err => {
+            console.log('Error on delete tx: ', err);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

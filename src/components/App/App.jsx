@@ -24,6 +24,7 @@ import MobileCallReviewPage from '../MobileCallReviewPage/MobileCallReviewPage';
 import SelectMode from '../SelectMode/SelectMode';
 import MainMenu from '../MainMenu/MainMenu';
 import TreatmentPage from '../TreatmentPage/TreatmentPage';
+import TreatmentReview from '../TreatmentReview/TreatmentReview';
 
 import './App.css';
 import MobileRunDetailsPage from '../MobileRunDetailsPage/MobileRunDetailsPage';
@@ -122,6 +123,11 @@ function App() {
             exact
             path='/mobileReview/:run'>
               <MobileRunDetailsPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/treatmentReview'>
+              <TreatmentReview />
           </ProtectedRoute>
 
           <Route
