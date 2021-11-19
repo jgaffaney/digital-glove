@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Box, Grid } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,33 +29,49 @@ function SelectMode() {
 
     return (
         <div>
-            {currentRun > 0 ?
-                (<>
-                    <EndCallButton />
-                    <br />
-                    <Button onClick={() => history.push('/mainMenu')} variant='contained' >
-                        Main Menu
-                    </Button>
-                </>
-                ) : (
-                    <>
+            <Box sx={{ flexGrow: 1, m: 'auto' }}>
+                <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
+
+                    {currentRun > 0 ?
+                        (<>
+                            <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
+                                <EndCallButton />
+                            </Grid>
+
+                            <br />
+                            <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
+                                <Button
+                                    sx={{ width: '200px', height: '75px', mt: '4%', mb: '4%' }}
+                                    onClick={() => history.push('/mainMenu')} variant='contained' >
+                                    Main Menu
+                                </Button>
+                            </Grid>
+                        </>
+                        ) : (
+                            <>
+                                <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
+                                    <Button
+                                        sx={{ width: '200px', height: '75px', mt: '4%', mb: '4%' }}
+                                        onClick={handleNew}
+                                        variant='contained'
+                                    >
+                                        NEW CALL
+                                    </Button>
+                                </Grid>
+                            </>
+                        )
+                    }
+                    <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
                         <Button
-                            onClick={handleNew}
+                            sx={{ width: '200px', height: '75px', mt: '4%', mb: '4%' }}
                             variant='contained'
+                            onClick={handleReview}
                         >
-                            NEW CALL
+                            Review Previous Calls
                         </Button>
-
-                    </>
-                )
-            }
-
-            <Button
-                variant='contained'
-                onClick={handleReview}
-            >
-                Review Previous Calls
-            </Button>
+                    </Grid>
+                </Grid>
+            </Box>
         </div>
     )
 }

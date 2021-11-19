@@ -40,7 +40,11 @@ function MainMenu() {
         </div>
     )
 } else {
-   history.push('/home')
+    history.push('/home')
+
+    return(
+        <p></p>
+    )
 } 
     }
 
