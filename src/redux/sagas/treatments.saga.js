@@ -26,9 +26,20 @@ function* addTxEvent(action) {
     }
 }
 
+function* fetchCurrentTreatment(action) {
+    console.log('in fetchCurrentTx saga');
+    try {
+        const response = yield axios.get(`/api/treatments/current/${action.payload}`)
+        yield put({type: 'SET_CURRENT_TREATMENT', payload: response.data})
+    } catch (error) {
+        console.log('Error in fetchCurrentTreatment: ', error);
+    }
+}
+
 function* treatmentsSaga() {
     yield takeLatest('FETCH_TREATMENTS', fetchTreatments)
     yield takeLatest('ADD_TX_EVENT', addTxEvent)
+    yield takeLatest('FETCH_CURRENT_TREATMENT', fetchCurrentTreatment)
 }
 
 export default treatmentsSaga;
