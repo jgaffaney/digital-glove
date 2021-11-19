@@ -42,7 +42,7 @@ function* deleteTreatment(action) {
     
     try {
         yield axios.delete(`/api/treatments/${action.payload}`)
-        yield put({type: 'FETCH_RUN_DETAILS', payload: action.run.run, history: action.history})
+        yield put({type: 'FETCH_RUN_DETAILS', payload: action.run, history: action.history})
     } catch (error) {
         console.log('Error on deleteTreatment: ', error);
         
