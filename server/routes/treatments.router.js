@@ -23,6 +23,21 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
     })
 });
 
+router.get('/current/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    SELECT "events".procedure, "runs_events".timestamp, "runs_events".id FROM "runs_events"
+    JOIN "events" ON "events".id = "runs_events".events_id
+    WHERE "runs_events".id = $1;
+    `
+    pool.query(queryText, [req.params.id])
+        .then(response => {
+            res.send(response.rows)
+        }).catch(err => {
+            console.log('Error on get for current tx: ', err);
+            res.sendStatus(500);
+        })
+})
+
 /**
  * POST route template
  */
@@ -44,5 +59,19 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500)
     })
 });
+
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    DELETE FROM "runs_events"
+    WHERE id = $1;
+    `
+    pool.query(queryText, [req.params.id])
+        .then(response => {
+            res.sendStatus(204)
+        }).catch( err => {
+            console.log('Error on delete tx: ', err);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;
