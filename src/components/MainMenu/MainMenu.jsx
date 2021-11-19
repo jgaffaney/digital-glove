@@ -1,12 +1,17 @@
 import { Button, Box, Grid } from '@mui/material';
 import EndCallButton from '../EndCallButton/EndCallButton';
 import MainMenuButton from '../MainMenuButton/MainMenuButton';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function MainMenu() {
 
+        const history = useHistory();
 
+        const currentRun = useSelector(store=>store.currentRun)
 
-    return (
+    if(currentRun > 0) {
+       return (
         <div>
             <Box sx={{ flexGrow: 1, m: 'auto' }}>
                 <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
@@ -34,6 +39,11 @@ function MainMenu() {
 
         </div>
     )
-}
+} else {
+   history.push('/home')
+} 
+    }
+
+    
 
 export default MainMenu;
