@@ -42,7 +42,7 @@ router.get('/current/:id', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in post: ', req);
+    console.log('req.body in post: ', req.body);
     
   // POST route code here
   const queryText = `

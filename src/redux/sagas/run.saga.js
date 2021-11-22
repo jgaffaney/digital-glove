@@ -55,13 +55,15 @@ function* fetchRunDetails(action) {
     
     try {
         const response = yield axios.get(`/api/run/details/${action.payload}`)
-        yield put({type: 'SET_RUN_DETAILS', payload: response.data})
-        action.history.push(`/mobileReview/${action.payload}`);
+        yield put({type: 'SET_RUN_DETAILS', payload: response.data});
+            action.history.push(`/mobileReview/${action.payload}`);
+        
     } catch (error) {
         console.log('Error on fetchRunDetails: ', error);
         
     }
 }
+
 
 // function* fetchEditRun(action) {
 //     try {
@@ -93,6 +95,7 @@ function* runSaga() {
     yield takeLatest('FETCH_RUN_DETAILS', fetchRunDetails)
     // yield takeLatest('FETCH_EDIT_RUN', fetchEditRun)
     yield takeLatest('END_CALL', endCall)
+    // yield takeLatest('REFRESH_RUN_DETAILS', refreshRunDetails)
 }
 
 export default runSaga;

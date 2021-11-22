@@ -76,7 +76,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 router.get('/currentRun', (req, res) => {
     const queryText = `
     SELECT * FROM currentRun
-    WHERE user-id = $1
+    WHERE user_id = $1
     `
     pool.query(queryText, [req.user.id])
         .then(response => {
