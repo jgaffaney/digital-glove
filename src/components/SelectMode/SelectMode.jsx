@@ -23,9 +23,9 @@ function SelectMode() {
         history.push('/mobileReview')
     }
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_CURRENT_RUN' })
-    })
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_CURRENT_RUN' })
+    // })
 
     return (
         <div>

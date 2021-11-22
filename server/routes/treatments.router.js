@@ -15,7 +15,7 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
   `
   pool.query(queryText, [req.params.category])
     .then(response => {
-        console.log('response on tx get: ', response);
+        // console.log('response on tx get: ', response);
         res.send(response.rows);
     }).catch(err=> {
         console.log('Error on tx get: ', err);

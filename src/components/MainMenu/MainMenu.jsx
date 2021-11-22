@@ -3,6 +3,8 @@ import EndCallButton from '../EndCallButton/EndCallButton';
 import MainMenuButton from '../MainMenuButton/MainMenuButton';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import RunningTimer from '../RunningTimer/RunningTimer';
+import CurrentTime from '../CurrentTime/CurrentTime';
 
 function MainMenu() {
 
@@ -10,9 +12,12 @@ function MainMenu() {
 
         const currentRun = useSelector(store=>store.currentRun)
 
-    if(currentRun > 0) {
+    if(currentRun.id > 0) {
        return (
         <div>
+            <>
+            <RunningTimer />
+            <CurrentTime />
             <Box sx={{ flexGrow: 1, m: 'auto' }}>
                 <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
                     <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
@@ -34,6 +39,7 @@ function MainMenu() {
                 </Grid>
             </Box>
             <br /><br />
+            </>
 
 
 

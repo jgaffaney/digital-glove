@@ -8,9 +8,9 @@ function* beginRun(action) {
         console.log('action.payload.id: ', action.payload);
         
         const currentRun = yield axios.post('/api/run/begin', action.payload);
-        console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
-        yield axios.put('/api/run/currentRun', {run_id: currentRun.data.rows[0].id})
-        yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0].id})
+        console.log('currentRun in beginRun: ', currentRun.data.rows[0].id);
+        yield axios.put('/api/run/currentRun', {run: currentRun.data.rows[0]})
+        yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0]})
         const response = yield axios.get(`/api/run/${action.payload.id}`)
         console.log('response.data: ', response.data);
         yield put({type: 'SET_RUNS', payload: response.data})
@@ -41,7 +41,7 @@ function* deleteRun(action) {
 
 function* fetchCurrentRun(action) {
     try {
-        const response = yield axios.get('/api/run/currentRun')
+        const response = yield axios.get('/api/run/')
         console.log('response in fetchCurrentRun: ', response);
         
         yield put({type: 'SET_CURRENT_RUN', payload: response.data})
@@ -76,10 +76,10 @@ function* fetchRunDetails(action) {
 // }
 
 function* endCall(action) {
-    console.log('action in endCall: ', action);
+    console.log('action in endCall: ', action.payload.id);
     
     try {
-        yield axios.put(`/api/run/${action.payload}`);
+        yield axios.put(`/api/run/${action.payload.id}`);
         yield put({type: 'CLEAR_CURRENT_RUN'})
         action.history.push('/select');
     } catch (error) {

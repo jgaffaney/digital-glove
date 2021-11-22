@@ -82,3 +82,4 @@ VALUES ('chest', 'Chest Compressions'),
 
 
 
+ALTER TABLE "public"."currentrun" ALTER COLUMN "timestamp" TYPE USING "timestamp"::timestamp without time zone
