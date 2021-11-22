@@ -48,7 +48,7 @@ router.post('/begin', rejectUnauthenticated, (req, res) => {
     const queryText = `
   INSERT INTO runs ("user_id")
   VALUES ($1)
-  RETURNING "id";
+  RETURNING "id", "start_timestamp";
   `
     pool.query(queryText, [req.body.id])
         .then(response => {
@@ -88,12 +88,15 @@ router.get('/currentRun', (req, res) => {
 })
 
 router.put('/currentRun', (req, res) => {
+    console.log('reg.body currentRun put: ', req.body);
+    
     const queryText = `
     UPDATE currentRun
-    SET "currentRun" = $1
-    WHERE user_id = $2;
+    SET "currentRun" = $1,
+    "timestamp" = $2
+    WHERE user_id = $3;
     `
-    pool.query(queryText, [req.body.run_id, req.user.id])
+    pool.query(queryText, [req.body.run.id, req.body.run.start_timestamp, req.user.id])
         .then(response => {
             res.sendStatus(200)
         }).catch(err => {

@@ -11,7 +11,7 @@ function ReviewTreatmentButton() {
 
     const handleClick = () => {
         console.log('Review TX clicked');
-        dispatch({type: 'FETCH_RUN_DETAILS', payload: run, history: history})
+        dispatch({type: 'FETCH_RUN_DETAILS', payload: run.id, history: history})
     }
 
     return (

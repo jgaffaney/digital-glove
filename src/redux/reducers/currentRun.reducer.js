@@ -1,4 +1,6 @@
-const currentRunReducer = (state = 0, action) => {
+const defaultRun = {id: '', start_timestamp: ''}
+
+const currentRunReducer = (state = defaultRun, action) => {
     switch(action.type) {
         case 'SET_CURRENT_RUN':
             return action.payload;

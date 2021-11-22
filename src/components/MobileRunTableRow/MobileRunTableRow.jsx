@@ -15,7 +15,7 @@ function MobileRunTableRow({run}) {
     //get user from store
     const user = useSelector(store=>store.user)
 
-    // convert SQL date to readable 
+    // convert SQL date to readable toLocaleString(DateTime.DATETIME_SHORT)
     const dtStart = DateTime.fromISO(run.start_timestamp).toLocaleString(DateTime.DATETIME_SHORT);
 
     const MySwal = withReactContent(Swal);
