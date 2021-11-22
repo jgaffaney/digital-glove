@@ -15,7 +15,7 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
   `
   pool.query(queryText, [req.params.category])
     .then(response => {
-        console.log('response on tx get: ', response);
+        // console.log('response on tx get: ', response);
         res.send(response.rows);
     }).catch(err=> {
         console.log('Error on tx get: ', err);
@@ -42,7 +42,7 @@ router.get('/current/:id', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in post: ', req);
+    console.log('req.body in post: ', req.body);
     
   // POST route code here
   const queryText = `

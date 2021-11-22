@@ -12,14 +12,14 @@ function RunningTimer() {
     // console.log('startTime: ', startTime);
         const currentRun = useSelector(store=>store.currentRun)
         const startTime = DateTime.fromISO(currentRun.start_timestamp);
-        console.log('startTime: ', startTime);
+        // console.log('startTime: ', startTime);
 
         useEffect(()=> {
             let secTimer = setInterval( () => {
                 const endTime = DateTime.now();
 
                 setElapsedTime(Duration.fromObject({milliseconds:endTime.minus(startTime.toMillis())}).toFormat('hh:mm:ss'))
-        }, 1000)
+        }, 100)
         return () => clearInterval(secTimer);
 
         },[])

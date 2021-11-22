@@ -9,10 +9,10 @@ function CurrentTime() {
         
             let secTimer = setInterval( () => {
                 setTimeNow(DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS));
-            },1000)
+            }, 100)
         
             return () => clearInterval(secTimer);
-        }, []);
+        },[]);
         
     
     return(
