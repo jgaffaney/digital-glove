@@ -9,16 +9,17 @@ function RunningTimer() {
     
     // console.log('startTime: ', startTime);
         const currentRun = useSelector(store=>store.currentRun)
-        const startTime = DateTime.fromISO(currentRun.start_timestamp);
+        const startTime = DateTime.fromISO(currentRun.start_timestamp).toISO().toLocaleString(DateTime.TIME_WITH_SECONDS);
         console.log('startTime: ', startTime);
-        const endTime = DateTime.now();
+        const endTime = DateTime.now().toISO();
         // const elapsedTime = DateTime.now().toISO() - startTime
         // console.log('elapsedTime: ', elapsedTime);
         // const interval = Interval.fromDateTimes(startTime, endTime).toISO().toLocaleString(DateTime.DATETIME_SHORT)
 
         // console.log('Interval: ', interval);
-        console.log('elapsed: ', Interval.fromDateTimes({start:startTime, end:endTime}));
-
+        console.log('endTime: ', endTime)
+        const elapsedTime = DateTime.fromMillis(endTime - startTime).toLocaleString(DateTime.TIME_WITH_SECONDS);
+        console.log(`elapsed time: `, elapsedTime);
     // useEffect(() => {
         
 
@@ -26,7 +27,7 @@ function RunningTimer() {
 
 
     return(
-        <p>Timer</p>
+        <p>Timer: {elapsedTime}</p>
     )
 }
 

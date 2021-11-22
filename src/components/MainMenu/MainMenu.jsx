@@ -16,7 +16,7 @@ function MainMenu() {
        return (
         <div>
             <>
-            {/* <RunningTimer /> */}
+            <RunningTimer />
             <CurrentTime />
             <Box sx={{ flexGrow: 1, m: 'auto' }}>
                 <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
