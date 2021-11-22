@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const currentRun = useSelector((store)=> store.currentRun);
 
   return (
     <div className="nav">

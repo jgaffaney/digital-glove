@@ -5,7 +5,7 @@ const currentRunReducer = (state = defaultRun, action) => {
         case 'SET_CURRENT_RUN':
             return action.payload;
         case 'CLEAR_CURRENT_RUN':
-            return state = 0;
+            return state = defaultRun;
         default:
             return state;
     }
