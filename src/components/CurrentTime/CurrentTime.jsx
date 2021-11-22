@@ -8,7 +8,8 @@ function CurrentTime() {
     useEffect(()=>{
         
             let secTimer = setInterval( () => {
-                setTimeNow(DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS));            },1000)
+                setTimeNow(DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS));
+            },1000)
         
             return () => clearInterval(secTimer);
         }, []);
