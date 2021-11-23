@@ -71,7 +71,7 @@ function App() {
             exact
             path="/user"
           >
-            <UserPage />
+            <SelectMode />
           </ProtectedRoute>
 
           <ProtectedRoute

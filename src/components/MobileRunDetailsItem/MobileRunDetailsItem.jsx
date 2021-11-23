@@ -26,7 +26,7 @@ function MobileRunDetailsItem({ item }) {
 
     const dtEvent = DateTime.fromISO(item.timestamp).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
 
-    console.log('item in mobilerundetailsitem: ', item);
+    // console.log('item in mobilerundetailsitem: ', item);
     return (
         <TableRow
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>

@@ -30,7 +30,7 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to='/mainMenu'>
-              Main Menu
+              Main TX Menu
             </Link>
 
             <LogOutButton className="navLink" />
