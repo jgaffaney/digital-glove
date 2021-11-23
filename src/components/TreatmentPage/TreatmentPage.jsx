@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { Box, Grid, Button } from '@mui/material';
 import ReviewTreatmentButton from '../ReviewTreatmentButton/ReviewTreatmentButton';
 import EndCallButton from '../EndCallButton/EndCallButton';
+import RunningTimer from '../RunningTimer/RunningTimer';
+import CurrentTime from '../CurrentTime/CurrentTime';
 
 function TreatmentPage() {
 
@@ -22,6 +24,8 @@ function TreatmentPage() {
     }, [])
     return (
         <div>
+            <RunningTimer />
+            <CurrentTime />
             <Box sx={{ flexGrow: 1, width: '90%' }}>
                 <Button onClick={() => history.goBack()}>Back</Button>
             </Box>

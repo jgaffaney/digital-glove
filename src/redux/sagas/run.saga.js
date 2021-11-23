@@ -41,7 +41,7 @@ function* deleteRun(action) {
 
 function* fetchCurrentRun(action) {
     try {
-        const response = yield axios.get('/api/run/')
+        const response = yield axios.get('/api/run/currentRun')
         console.log('response in fetchCurrentRun: ', response);
         
         yield put({type: 'SET_CURRENT_RUN', payload: response.data})
@@ -51,12 +51,12 @@ function* fetchCurrentRun(action) {
 }
 
 function* fetchRunDetails(action) {
-    console.log('action in fetchRunDetails: ', action);
+    console.log('action in fetchRunDetails: ', action.payload);
     
     try {
-        const response = yield axios.get(`/api/run/details/${action.payload}`)
+        const response = yield axios.get(`/api/run/details/${action.payload.id}`)
         yield put({type: 'SET_RUN_DETAILS', payload: response.data});
-            action.history.push(`/mobileReview/${action.payload}`);
+            action.history?.push(`/mobileReview/${action.payload}`);
         
     } catch (error) {
         console.log('Error on fetchRunDetails: ', error);
@@ -76,7 +76,7 @@ function* fetchRunDetails(action) {
 // }
 
 function* endCall(action) {
-    console.log('action in endCall: ', action.payload.id);
+    console.log('action in endCall: ', action);
     
     try {
         yield axios.put(`/api/run/${action.payload.id}`);

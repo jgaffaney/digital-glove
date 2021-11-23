@@ -47,7 +47,8 @@ function MobileRunTableRow({run}) {
     }
 
     const handleEdit = () => {
-        dispatch({type: 'FETCH_RUN_DETAILS', payload: run.id, history: history})
+        console.log('Edit/View clicked with run: ', run);
+        dispatch({type: 'FETCH_RUN_DETAILS', payload: run, history: history})
     }
     
     return(

@@ -1,4 +1,4 @@
-const runDetails = (state = {}, action) => {
+const runDetails = (state = [], action) => {
     switch(action.type) {
         case('SET_RUN_DETAILS'):
             return action.payload

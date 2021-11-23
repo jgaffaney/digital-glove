@@ -12,8 +12,8 @@ function MobileRunDetailsItem({ item }) {
 
 
     const handleEdit = () => {
-        console.log('Edit Clicked');
-        dispatch({type: 'FETCH_CURRENT_TREATMENT', payload: item.id, history: history})
+        console.log('Edit Clicked with item: ', item);
+        dispatch({type: 'FETCH_CURRENT_TREATMENT', payload: item, history: history})
     }
 
     const handleDelete = () => {

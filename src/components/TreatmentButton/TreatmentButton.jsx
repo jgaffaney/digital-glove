@@ -11,40 +11,37 @@ function TreatmentButton({ treatment }) {
     // console.log('tx in txbtn: ', treatment);
 
     const dispatch = useDispatch();
-    const run = useSelector(store=>store.currentRun)
-    const runDetails = useSelector(store=>store.runDetails)
+    const run = useSelector(store => store.currentRun)
+    const runDetails = useSelector(store => store.runDetails)
     // click handler
     const handleClick = () => {
         console.log(treatment.procedure.toLowerCase(), ' clicked');
-        dispatch({type: 'ADD_TX_EVENT', payload: treatment, run: run})
+        dispatch({ type: 'ADD_TX_EVENT', payload: treatment, run: run })
     }
 
     const findLast = () => {
-        let last;
-        if(runDetails){
-            for(let tx of runDetails) {
+        let last = '';
+        runDetails?.map(tx => {
             if (tx.procedure.toLowerCase() == treatment.procedure.toLowerCase()) {
                 last = DateTime.fromISO(tx.timestamp).toLocaleString(DateTime.TIME_WITH_SECONDS)
-            }
-        } return last;
-        }
-        
-    }
-    const lastEvent = findLast();
+            } return last;
+        }) 
+}
+const lastEvent = findLast();
 
-    useEffect(() => {
-        dispatch({type:'FETCH_RUN_DETAILS', payload: run})
-    },[]);
-
-    return (
-        <div>
-            <Button
-                sx={{ width: '130px', height: '60px', justifyContent: '',}}
-                variant='contained'
-                onClick={handleClick}>{treatment.procedure}</Button>
-                <p>Last: {lastEvent}</p>
-        </div>
-    )
+useEffect(() => {
+    dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
+}, []);
+console.log('run in txButton: ', run);
+return (
+    <div>
+        <Button
+            sx={{ width: '130px', height: '60px', justifyContent: '', }}
+            variant='contained'
+            onClick={handleClick}>{treatment.procedure}</Button>
+        <p>Last: {lastEvent}</p>
+    </div>
+)
 }
 
 export default TreatmentButton;

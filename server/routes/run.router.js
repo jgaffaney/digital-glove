@@ -73,7 +73,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         })
 })
 
-router.get('/', (req, res) => {
+router.get('/currentRun', (req, res) => {
     console.log('req.user.id: ', req.user.id);
     
     const queryText = `
