@@ -20,28 +20,36 @@ function TreatmentButton({ treatment }) {
     }
 
     const findLast = () => {
+        console.log('in findLast');
         let last = '';
-        runDetails?.map(tx => {
+        runDetails.map(tx => {
+            // console.log('tx.pro in runDetails.mp: ', tx.procedure.toLowerCase())
+            // console.log('treatment.pro in rundetails.map: ', treatment.procedure.toLowerCase());
             if (tx.procedure.toLowerCase() == treatment.procedure.toLowerCase()) {
+                console.log('if to true');
                 last = DateTime.fromISO(tx.timestamp).toLocaleString(DateTime.TIME_WITH_SECONDS)
-            } return last;
-        }) 
-}
-const lastEvent = findLast();
+            }
+            console.log('last in findLast: ', last);
+        });
+        return last;
 
-useEffect(() => {
-    dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
-}, []);
-// console.log('run in txButton: ', run);
-return (
-    <div>
-        <Button
-            sx={{ width: '130px', height: '60px', justifyContent: '', }}
-            variant='contained'
-            onClick={handleClick}>{treatment.procedure}</Button>
-        <p>Last: {lastEvent}</p>
-    </div>
-)
+    }
+    const lastEvent = findLast();
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
+    }, []);
+    console.log('lastEvent: ', lastEvent);
+
+    return (
+        <div>
+            <Button
+                sx={{ width: '130px', height: '60px', justifyContent: '', }}
+                variant='contained'
+                onClick={handleClick}>{treatment.procedure}</Button>
+            <p>Last: {lastEvent}</p>
+        </div>
+    )
 }
 
 export default TreatmentButton;

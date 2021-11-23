@@ -20,6 +20,7 @@ function* addTxEvent(action) {
     
     try {
         yield axios.post(`/api/treatments/${action.treatment.id}`, {run_id: action.payload.id})
+        yield put({type: 'FETCH_RUN_DETAILS', payload: action.payload})
     } catch (error) {
         console.log('Error on addTxEvent: ', error);
         
