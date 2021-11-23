@@ -28,9 +28,9 @@ function* addTxEvent(action) {
 }
 
 function* fetchCurrentTreatment(action) {
-    console.log('in fetchCurrentTx saga');
+    console.log('in fetchCurrentTx saga with action: ', action);
     try {
-        const response = yield axios.get(`/api/treatments/current/${action.payload}`)
+        const response = yield axios.get(`/api/treatments/current/${action.payload.id}`)
         yield put({type: 'SET_CURRENT_TREATMENT', payload: response.data})
         action.history.push('/treatmentReview')
     } catch (error) {
