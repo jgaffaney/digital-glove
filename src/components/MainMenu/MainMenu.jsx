@@ -46,10 +46,10 @@ function MainMenu() {
         </div>
     )
 } else {
-    history.push('/home')
+    // history.push('/home')
 
     return(
-        <p></p>
+        <h1>You do not have an open run at this time</h1>
     )
 } 
     }
