@@ -56,7 +56,7 @@ function* fetchRunDetails(action) {
     try {
         const response = yield axios.get(`/api/run/details/${action.payload.id}`)
         yield put({type: 'SET_RUN_DETAILS', payload: response.data});
-            action.history?.push(`/mobileReview/${action.payload}`);
+            action.history?.push(`/mobileReview/${action.payload.id}`);
         
     } catch (error) {
         console.log('Error on fetchRunDetails: ', error);
