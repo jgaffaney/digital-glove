@@ -31,8 +31,8 @@ function* fetchCurrentTreatment(action) {
     console.log('in fetchCurrentTx saga with action: ', action);
     try {
         const response = yield axios.get(`/api/treatments/current/${action.payload.id}`)
-        yield put({type: 'SET_CURRENT_TREATMENT', payload: response.data})
-        action.history.push('/treatmentReview')
+        yield put({type: 'SET_CURRENT_TREATMENT', payload: response.data[0]})
+        action.history.push(`/treatmentReview/${action.payload.id}`)
     } catch (error) {
         console.log('Error in fetchCurrentTreatment: ', error);
     }
@@ -50,11 +50,21 @@ function* deleteTreatment(action) {
     }
 }
 
+function* fetchAllTreatments(action) {
+    try {
+        const response = yield axios.get('api/treatments/all')
+        yield put({type: 'SET_ALL_TREATMENTS', payload: response.data});
+    } catch (error) {
+        console.log('Error on fetchAllTreatments: ', error);
+    }
+}
+
 function* treatmentsSaga() {
     yield takeLatest('FETCH_TREATMENTS', fetchTreatments)
     yield takeLatest('ADD_TX_EVENT', addTxEvent)
     yield takeLatest('FETCH_CURRENT_TREATMENT', fetchCurrentTreatment);
     yield takeLatest('DELETE_TREATMENT', deleteTreatment)
+    yield takeLatest('FETCH_ALL_TREATMENTS', fetchAllTreatments)
 }
 
 export default treatmentsSaga;

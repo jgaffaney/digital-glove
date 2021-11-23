@@ -1,26 +1,40 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const {rejectUnauthenticated} = require('../modules/authentication-middleware')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
 /**
  * GET route template
  */
+router.get('/all', rejectUnauthenticated, (req, res) => {
+    const queryText = `
+    SELECT id, category, procedure FROM events
+    ORDER BY category;
+    `
+    pool.query(queryText)
+        .then(response => {
+            res.send(response.rows)
+        }).catch(err => {
+            console.log('Error on get all tx: ', err);
+            res.sendStatus(500);
+        })
+})
+
 router.get('/:category', rejectUnauthenticated, (req, res) => {
     console.log('req.body in treatmentsRouter get: ', req.params.category);
-    
-  const queryText = `
+
+    const queryText = `
     SELECT * FROM events
     WHERE category=$1;        
   `
-  pool.query(queryText, [req.params.category])
-    .then(response => {
-        // console.log('response on tx get: ', response);
-        res.send(response.rows);
-    }).catch(err=> {
-        console.log('Error on tx get: ', err);
-        res.sendStatus(500);
-    })
+    pool.query(queryText, [req.params.category])
+        .then(response => {
+            // console.log('response on tx get: ', response);
+            res.send(response.rows);
+        }).catch(err => {
+            console.log('Error on tx get: ', err);
+            res.sendStatus(500);
+        })
 });
 
 router.get('/current/:id', rejectUnauthenticated, (req, res) => {
@@ -43,21 +57,21 @@ router.get('/current/:id', rejectUnauthenticated, (req, res) => {
  */
 router.post('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.body in post: ', req.body);
-    
-  // POST route code here
-  const queryText = `
+
+    // POST route code here
+    const queryText = `
     INSERT INTO runs_events ("runs_id", "events_id")
     VALUES($1, $2);
   `
-  const values = [req.body.run_id, req.params.id]
-  pool.query(queryText, values)
-    .then(response => {
-        res.sendStatus(201)
-    }).catch(err=> {
-        console.log('Error on runs_events post: ', err);
-        
-        res.sendStatus(500)
-    })
+    const values = [req.body.run_id, req.params.id]
+    pool.query(queryText, values)
+        .then(response => {
+            res.sendStatus(201)
+        }).catch(err => {
+            console.log('Error on runs_events post: ', err);
+
+            res.sendStatus(500)
+        })
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
@@ -68,7 +82,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     pool.query(queryText, [req.params.id])
         .then(response => {
             res.sendStatus(204)
-        }).catch( err => {
+        }).catch(err => {
             console.log('Error on delete tx: ', err);
             res.sendStatus(500);
         })

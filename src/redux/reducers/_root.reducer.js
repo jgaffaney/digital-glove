@@ -7,6 +7,7 @@ import currentRun from './currentRun.reducer';
 // import currentDetails from './currentRunDetails.reducer';
 import runDetails from './runDetails.reducer';
 import currentTreatment from './currentTreatment.reducer';
+import allTreatments from './allTreatments.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   // currentDetails, // will hold all the details for the current run
   runDetails, // will hold all the details for the run being reviewed.
   currentTreatment, // will hold the current treatment being reviewed.
+  allTreatments, // will hold all treatments for edit
 });
 
 export default rootReducer;
