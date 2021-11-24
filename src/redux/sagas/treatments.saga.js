@@ -59,12 +59,22 @@ function* fetchAllTreatments(action) {
     }
 }
 
+function* editTreatment(action) {
+    try {
+        yield axios.put(`api/treatments/${action.payload.id}`, {treatment: action.payload})
+
+    } catch (error) {
+        console.log('Error on editTreatment: ', error);
+    }
+}
+
 function* treatmentsSaga() {
     yield takeLatest('FETCH_TREATMENTS', fetchTreatments)
     yield takeLatest('ADD_TX_EVENT', addTxEvent)
     yield takeLatest('FETCH_CURRENT_TREATMENT', fetchCurrentTreatment);
     yield takeLatest('DELETE_TREATMENT', deleteTreatment)
     yield takeLatest('FETCH_ALL_TREATMENTS', fetchAllTreatments)
+    yield takeLatest('EDIT_TX', editTreatment)
 }
 
 export default treatmentsSaga;

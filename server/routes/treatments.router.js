@@ -74,6 +74,27 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in put: ', req.body.treatment.event_id);
+    
+    const queryText = `
+    UPDATE runs_events
+    SET events_id = $1,
+    timestamp = $2
+    WHERE id = $3;
+    `
+    const values = [req.body.treatment.event_id, req.body.treatment.timestamp, req.params.id]
+    console.log('values in put: ', values);
+    
+    pool.query(queryText, values)
+        .then(response => {
+            res.sendStatus(201)
+        }).catch(err => {
+            console.log('Error on treatment put: ', err);
+            res.sendStatus(500);
+        })
+})
+
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
     DELETE FROM "runs_events"

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FormControl, TextField, Select, InputLabel, MenuItem, Box, 
             NativeSelect, Button, Divider } from '@mui/material';
@@ -12,6 +12,7 @@ function TreatmentReview() {
 
     const treatment = useSelector(store => store.currentTreatment);
     const allTreatments = useSelector(store => store.allTreatments);
+    const runID = useParams();
 
     const sortTreatments = (category) => {
         console.log('in sortTreatments');
@@ -42,27 +43,32 @@ function TreatmentReview() {
     const access = sortTreatments('access');
     const medication = sortTreatments('medication');
 
+    // console.log('tx.id from airway[0]: ', airway[0].id);
+
     console.log('date from treatment: ', DateTime.fromISO(treatment.timestamp).toISODate());
 
     const [newTxDetails, setNewTxDetails] = useState(treatment);
 
     const handleTimeChange = (time) => {
         console.log('time in timechange: ', time);
-        console.log('fromFormat: ', DateTime.fromFormat());
+        // console.log('fromFormat: ', DateTime.fromFormat());
         const date = DateTime.fromISO(treatment.timestamp).toISODate();
         const newTime = date + ' ' + time;
+        console.log('newTime: ', newTime);
         setNewTxDetails({...newTxDetails, timestamp: newTime})
     }
 
     const handleSubmit = () => {
+        console.log('newTxDetails: ', newTxDetails);
         dispatch({type: 'EDIT_TX', payload: newTxDetails })
         history.goBack();
     }
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_TREATMENTS' })
+        dispatch({type: 'FETCH_RUN_DETAILS', payload: runID})
     }, [])
-    console.log('tx review tx,start_timestamp: ', defaultTime)
+    console.log('tx review tx, timestamp: ', defaultTime)
 
     return (
         <Box>
@@ -77,7 +83,7 @@ function TreatmentReview() {
                     // id='treatment-select'
                     defaultValue={defaultID}
                     label='Treatment'
-                    onChange={(event)=> setNewTxDetails({...newTxDetails, procedure: event.target.value})}
+                    onChange={(event)=> setNewTxDetails({...newTxDetails, event_id: event.target.value, procedure: ''})}
                 >
                     {/* <option aria-label={treatment.procedure} value={treatment.id} /> */}
                     <optgroup label='Airway'>
