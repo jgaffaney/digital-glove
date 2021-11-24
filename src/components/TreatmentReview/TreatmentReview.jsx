@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FormControl, TextField, Select, InputLabel, MenuItem, Box, 
-            NativeSelect, Button, Divider, Dialog, DialogActions, DialogContent,
-            DialogContentText, DialogTitle } from '@mui/material';
+            NativeSelect, Button, Divider } from '@mui/material';
 import { DateTime } from 'luxon';
 
 function TreatmentReview() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const treatment = useSelector(store => store.currentTreatment);
     const allTreatments = useSelector(store => store.allTreatments);
@@ -49,11 +50,13 @@ function TreatmentReview() {
         console.log('time in timechange: ', time);
         console.log('fromFormat: ', DateTime.fromFormat());
         const date = DateTime.fromISO(treatment.timestamp).toISODate();
-        // const time = 
+        const newTime = date + ' ' + time;
+        setNewTxDetails({...newTxDetails, timestamp: newTime})
     }
 
     const handleSubmit = () => {
-        dispatch({type: 'EDIT_TX', payload: treatment })
+        dispatch({type: 'EDIT_TX', payload: newTxDetails })
+        history.goBack();
     }
 
     useEffect(() => {
@@ -94,6 +97,7 @@ function TreatmentReview() {
                             <option key={tx.id} value={tx.id}>{tx.procedure}</option>
                         ))}
                     </optgroup>
+                    <Divider />
                     <optgroup label='Medication'>
                         {medication.map(tx => (
                             <option key={tx.id} value={tx.id}>{tx.procedure}</option>
@@ -114,15 +118,23 @@ function TreatmentReview() {
                         step: 60, // 1 min
                     }}
                     sx={{ width: 175, m: 'auto' }}
-                    onChange={()=>handleTimeChange(event.target.value)}
+                    onChange={(event)=>handleTimeChange(event.target.value)}
                 />
                 <br /><br />
                 <Button
-                    type='submit'
+                    onClick={handleSubmit}
                     variant='contained'
                     sx={{m:'auto', width: '60%'}}
                 >
                     Submit
+                </Button>
+                <Button 
+                    variant='contained' 
+                    color='error' 
+                    onClick={() => history.goBack()}
+                    sx={{m:'auto', width: '60%'}}
+                >
+                    Cancel
                 </Button>
             </FormControl>
         </Box>
