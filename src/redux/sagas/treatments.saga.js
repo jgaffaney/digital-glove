@@ -60,6 +60,8 @@ function* fetchAllTreatments(action) {
 }
 
 function* editTreatment(action) {
+    console.log('action in edit treatment: ',  action);
+    
     try {
         yield axios.put(`api/treatments/${action.payload.id}`, {treatment: action.payload})
 

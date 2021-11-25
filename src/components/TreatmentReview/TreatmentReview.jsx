@@ -34,6 +34,7 @@ function TreatmentReview() {
     }
 
     const defaultID = findID();
+    console.log('defaultID in TR: ', defaultID);
 
     const defaultTime = `${DateTime.fromISO(treatment.timestamp).toLocaleString(DateTime.TIME_24_WITH_SECONDS)}`
 
@@ -59,6 +60,14 @@ function TreatmentReview() {
     }
 
     const handleSubmit = () => {
+        console.log('in handleSubmit procedure: ', newTxDetails.procedure);
+        console.log('typeof test: ', (typeof(newTxDetails.procedure) == 'string'));
+        if(typeof(newTxDetails.procedure) == 'string') {
+            console.log('typeof evaluated to true');
+            console.log('defaultID in if block: ', defaultID);
+            setNewTxDetails({...treatment, procedure: defaultID})
+            console.log('newTxDets after set in if block: ', newTxDetails);
+        }
         console.log('newTxDetails: ', newTxDetails);
         dispatch({type: 'EDIT_TX', payload: newTxDetails })
         history.goBack();
@@ -80,12 +89,11 @@ function TreatmentReview() {
                         name: 'treatment',
                         id: 'uncontrolled-native'
                     }}
-                    // id='treatment-select'
                     defaultValue={defaultID}
                     label='Treatment'
-                    onChange={(event)=> setNewTxDetails({...newTxDetails, event_id: event.target.value, procedure: ''})}
+                    onChange={(event)=> setNewTxDetails({...newTxDetails, event_id: event.target.value})}
                 >
-                    {/* <option aria-label={treatment.procedure} value={treatment.id} /> */}
+                    <>
                     <optgroup label='Airway'>
                         {airway.map(tx => (
                             <option key={tx.id} value={tx.id}>{tx.procedure}</option>
@@ -109,6 +117,7 @@ function TreatmentReview() {
                             <option key={tx.id} value={tx.id}>{tx.procedure}</option>
                         ))}
                     </optgroup>
+                    </>
                 </NativeSelect>
                 <br /> <br />
                 <TextField

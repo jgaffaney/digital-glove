@@ -7,6 +7,7 @@ import ReviewTreatmentButton from '../ReviewTreatmentButton/ReviewTreatmentButto
 import EndCallButton from '../EndCallButton/EndCallButton';
 import RunningTimer from '../RunningTimer/RunningTimer';
 import CurrentTime from '../CurrentTime/CurrentTime';
+import { TryRounded } from '@mui/icons-material';
 
 function TreatmentPage() {
 
@@ -22,6 +23,15 @@ function TreatmentPage() {
     useEffect(() => {
         dispatch({ type: 'FETCH_TREATMENTS', payload: category.category })
     }, [])
+
+    const isMedication = () => {
+        if(category.category == 'Medication'){
+            return true
+        } else {
+            return false
+        }
+    }
+
     return (
         <div>
             <RunningTimer />
@@ -34,7 +44,7 @@ function TreatmentPage() {
                     {treatments.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>
-                                <TreatmentButton key={treatment.id} treatment={treatment} />
+                                <TreatmentButton displayLast={isMedication()} key={treatment.id} treatment={treatment} />
                             </Grid>
                         )
                     })}

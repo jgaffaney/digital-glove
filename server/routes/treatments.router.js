@@ -75,7 +75,7 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in put: ', req.body.treatment.event_id);
+    console.log('req.body in put: ', req.body.treatment);
     
     const queryText = `
     UPDATE runs_events
@@ -83,7 +83,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     timestamp = $2
     WHERE id = $3;
     `
-    const values = [req.body.treatment.event_id, req.body.treatment.timestamp, req.params.id]
+    const values = [req.body.treatment, req.body.treatment.timestamp, req.params.id]
     console.log('values in put: ', values);
     
     pool.query(queryText, values)

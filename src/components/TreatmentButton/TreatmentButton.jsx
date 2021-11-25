@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 // a reusable component to create a treatment button.  
 // pass in a treatment with at least id and name
 
-function TreatmentButton({ treatment }) {
+function TreatmentButton({ treatment, displayLast }) {
 
     // declare hook functions
     const dispatch = useDispatch();
@@ -45,14 +45,17 @@ function TreatmentButton({ treatment }) {
         dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
     }, []);
     // console.log('lastEvent: ', lastEvent);
-
+    console.log('displayLast: ', displayLast);
     return (
         <div>
             <Button
                 sx={{ width: '130px', height: '60px', justifyContent: '', }}
                 variant='contained'
-                onClick={handleClick}>{treatment.procedure}</Button>
-            <p>Last: {lastEvent}</p>
+                onClick={handleClick}>{treatment.procedure}
+            </Button>
+            {displayLast &&
+                <p>Last: {lastEvent}</p>
+            }
         </div>
     )
 }
