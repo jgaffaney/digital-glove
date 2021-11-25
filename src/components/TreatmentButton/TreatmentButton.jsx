@@ -26,26 +26,26 @@ function TreatmentButton({ treatment, displayLast }) {
     const findLast = () => {
         console.log('in findLast');
         let last = '';
-        runDetails.map(tx => {
+        runDetails.slice(0).reverse().map(tx => {
             // console.log('tx.pro in runDetails.mp: ', tx.procedure.toLowerCase())
             // console.log('treatment.pro in rundetails.map: ', treatment.procedure.toLowerCase());
             if (tx.procedure.toLowerCase() == treatment.procedure.toLowerCase()) {
                 console.log('if to true');
                 last = DateTime.fromISO(tx.timestamp).toLocaleString(DateTime.TIME_WITH_SECONDS)
             }
-            // console.log('last in findLast: ', last);
+            console.log('last in findLast for ', tx.procedure, ' :', last);
         });
         return last;
-
     }
     const lastEvent = findLast();
 
     // make sure runDetails is always fresh
     useEffect(() => {
         dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
+        // findLast();
     }, []);
     // console.log('lastEvent: ', lastEvent);
-    console.log('displayLast: ', displayLast);
+    // console.log('displayLast: ', displayLast);
     return (
         <div>
             <Button
@@ -53,9 +53,9 @@ function TreatmentButton({ treatment, displayLast }) {
                 variant='contained'
                 onClick={handleClick}>{treatment.procedure}
             </Button>
-            {displayLast &&
+            {/* {displayLast && */}
                 <p>Last: {lastEvent}</p>
-            }
+            {/* } */}
         </div>
     )
 }
