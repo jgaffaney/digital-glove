@@ -24,13 +24,13 @@ function TreatmentPage() {
         dispatch({ type: 'FETCH_TREATMENTS', payload: category.category })
     }, [])
 
-    // const isMedication = () => {
-    //     if(category.category == 'Medication'){
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }
+    const isMedication = () => {
+        if(category.category == 'Medication'){
+            return true
+        } else {
+            return false
+        }
+    }
 
     return (
         <div>
@@ -44,7 +44,7 @@ function TreatmentPage() {
                     {treatments.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>
-                                <TreatmentButton key={treatment.id} treatment={treatment} />
+                                <TreatmentButton displayLast={isMedication()} key={treatment.id} treatment={treatment} />
                             </Grid>
                         )
                     })}

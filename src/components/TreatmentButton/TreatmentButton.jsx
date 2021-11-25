@@ -45,7 +45,7 @@ function TreatmentButton({ treatment, displayLast }) {
         // findLast();
     }, []);
     // console.log('lastEvent: ', lastEvent);
-    // console.log('displayLast: ', displayLast);
+    console.log('displayLast: ', displayLast);
     return (
         <div>
             <Button
@@ -53,9 +53,9 @@ function TreatmentButton({ treatment, displayLast }) {
                 variant='contained'
                 onClick={handleClick}>{treatment.procedure}
             </Button>
-            {/* {displayLast && */}
+            {displayLast &&
                 <p>Last: {lastEvent}</p>
-            {/* } */}
+            }
         </div>
     )
 }
