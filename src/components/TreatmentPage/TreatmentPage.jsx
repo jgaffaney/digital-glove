@@ -7,7 +7,7 @@ import ReviewTreatmentButton from '../ReviewTreatmentButton/ReviewTreatmentButto
 import EndCallButton from '../EndCallButton/EndCallButton';
 import RunningTimer from '../RunningTimer/RunningTimer';
 import CurrentTime from '../CurrentTime/CurrentTime';
-import { TryRounded } from '@mui/icons-material';
+import SubNavBar from '../Nav/SubNavBar';
 
 function TreatmentPage() {
 
@@ -34,6 +34,7 @@ function TreatmentPage() {
 
     return (
         <div>
+            <SubNavBar />
             <RunningTimer />
             <CurrentTime />
             <Box sx={{ flexGrow: 1, width: '90%' }}>
