@@ -126,7 +126,7 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute
             exact
-            path='/treatmentReview'>
+            path='/treatmentReview/:id'>
               <TreatmentReview />
           </ProtectedRoute>
 

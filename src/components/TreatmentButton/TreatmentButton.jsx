@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 // a reusable component to create a treatment button.  
 // pass in a treatment with at least id and name
 
-function TreatmentButton({ treatment }) {
+function TreatmentButton({ treatment, displayLast }) {
 
     // declare hook functions
     const dispatch = useDispatch();
@@ -26,33 +26,36 @@ function TreatmentButton({ treatment }) {
     const findLast = () => {
         console.log('in findLast');
         let last = '';
-        runDetails.map(tx => {
+        runDetails.slice(0).reverse().map(tx => {
             // console.log('tx.pro in runDetails.mp: ', tx.procedure.toLowerCase())
             // console.log('treatment.pro in rundetails.map: ', treatment.procedure.toLowerCase());
             if (tx.procedure.toLowerCase() == treatment.procedure.toLowerCase()) {
                 console.log('if to true');
                 last = DateTime.fromISO(tx.timestamp).toLocaleString(DateTime.TIME_WITH_SECONDS)
             }
-            // console.log('last in findLast: ', last);
+            console.log('last in findLast for ', tx.procedure, ' :', last);
         });
         return last;
-
     }
     const lastEvent = findLast();
 
     // make sure runDetails is always fresh
     useEffect(() => {
         dispatch({ type: 'FETCH_RUN_DETAILS', payload: run })
+        // findLast();
     }, []);
     // console.log('lastEvent: ', lastEvent);
-
+    console.log('displayLast: ', displayLast);
     return (
         <div>
             <Button
                 sx={{ width: '130px', height: '60px', justifyContent: '', }}
                 variant='contained'
-                onClick={handleClick}>{treatment.procedure}</Button>
-            <p>Last: {lastEvent}</p>
+                onClick={handleClick}>{treatment.procedure}
+            </Button>
+            {displayLast &&
+                <p>Last: {lastEvent}</p>
+            }
         </div>
     )
 }

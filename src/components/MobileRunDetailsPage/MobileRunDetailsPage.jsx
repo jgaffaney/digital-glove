@@ -5,6 +5,7 @@ import {
     TableRow, TableBody, Paper, Box, Button
 } from '@mui/material';
 import { useHistory, useParams } from 'react-router';
+import { useEffect } from 'react';
 
 
 function MobileRunDetailsPage() {
@@ -14,6 +15,7 @@ function MobileRunDetailsPage() {
 
     const run = useSelector(store => store.runDetails)
     const runNumber = useParams();
+    console.log('runNumber: ', runNumber.run);
 
     // const findRun = () => {
     //     for(run of runs) {
@@ -24,6 +26,9 @@ function MobileRunDetailsPage() {
     // }
 
     // const run = findRun();
+    useEffect(()=> {
+        dispatch({type: 'FETCH_RUN_DETAILS', payload: {id: runNumber.run}})
+    }, [])
 
     return (
         <div>

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import MobileRunTableRow from '../MobileRunTableRow/MobileRunTableRow';
-import { Table, TableBody, TableContainer, TableCell, TableRow, TableHead, Paper } from '@mui/material'
+import { Table, TableBody, TableContainer, TableCell, TableRow, TableHead, Paper, Box } from '@mui/material'
 
 function MobileCallReviewPage() {
 
@@ -19,16 +19,18 @@ function MobileCallReviewPage() {
 
     console.log('runs: ', runs);
     return (
-        <div>
-            <h1>Mobile Call Review</h1>
+        <>
+        <h1>Mobile Call Review</h1>
+
+        <Box sx={{display: 'flex', width: '100%'}}>
             <TableContainer component={Paper}>
-                <Table width='90%' aria-label="simple table">
+                <Table width='100%' aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell width='20%' align="center">Run Number</TableCell>
-                            <TableCell width='20%' align="center">Start Date/Time</TableCell>
-                            <TableCell width='20%' align="center"></TableCell>
-                            <TableCell width='20%' align="center"></TableCell>
+                            <TableCell width='25%' align="center">Run Number</TableCell>
+                            <TableCell width='25%' align="center">Start Date/Time</TableCell>
+                            <TableCell width='25%' align="center"></TableCell>
+                            <TableCell width='25%' align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -38,7 +40,8 @@ function MobileCallReviewPage() {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </Box>
+        </>
     )
 }
 

@@ -12,6 +12,8 @@ function MobileRunDetailsItem({ item }) {
     const runID = {id: useParams()};
 
     const run = useSelector(store=>store.run)
+    console.log('run in mrdi: ', run);
+    console.log('runID in mrdi: ', runID);
 
 
     const handleEdit = () => {
@@ -21,7 +23,7 @@ function MobileRunDetailsItem({ item }) {
 
     const handleDelete = () => {
         console.log('Delete Clicked');
-        dispatch({type: 'DELETE_TREATMENT', payload: item.id, run: run[0], history: history})
+        dispatch({type: 'DELETE_TREATMENT', payload: item.id, run: run[0], runID: runID.id.run, history: history})
     }
 
     const dtEvent = DateTime.fromISO(item.timestamp).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
