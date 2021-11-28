@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   run, // will hold all runs for logged in user
-  treatments, // will hold all events available for use
+  treatments, // will hold all events available for use in the current category
   currentRun, // will hold the current run if there is one
   // currentDetails, // will hold all the details for the current run
   runDetails, // will hold all the details for the run being reviewed.

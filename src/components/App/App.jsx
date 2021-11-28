@@ -25,6 +25,7 @@ import SelectMode from '../SelectMode/SelectMode';
 import MainMenu from '../MainMenu/MainMenu';
 import TreatmentPage from '../TreatmentPage/TreatmentPage';
 import TreatmentReview from '../TreatmentReview/TreatmentReview';
+import Customize from '../Customize/Customize';
 
 import './App.css';
 import MobileRunDetailsPage from '../MobileRunDetailsPage/MobileRunDetailsPage';
@@ -129,6 +130,11 @@ function App() {
             path='/treatmentReview/:id'>
               <TreatmentReview />
           </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/customize'>
+              <Customize />
+            </ProtectedRoute>
 
           <Route
             exact

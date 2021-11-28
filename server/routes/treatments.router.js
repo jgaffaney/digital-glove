@@ -21,7 +21,7 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
 })
 
 router.get('/:category', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in treatmentsRouter get: ', req.params.category);
+    // console.log('req.body in treatmentsRouter get: ', req.params.category);
 
     const queryText = `
     SELECT * FROM events
@@ -75,7 +75,7 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('req.body in put: ', req.body.treatment);
+    // console.log('req.body in put: ', req.body.treatment);
     
     const queryText = `
     UPDATE runs_events
@@ -84,7 +84,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     WHERE id = $3;
     `
     const values = [req.body.treatment, req.body.treatment.timestamp, req.params.id]
-    console.log('values in put: ', values);
+    // console.log('values in put: ', values);
     
     pool.query(queryText, values)
         .then(response => {
