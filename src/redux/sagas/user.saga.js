@@ -28,13 +28,16 @@ function* postUserLayout(action) {
   console.log('action in postUserLayout: ', action);
   let layout = [];
   for(let button in action.payload){
-    layout.push(action.payload[button])
+    if(typeof action.payload[button] == 'number'){
+          layout.push(action.payload[button])
+    }
   }
   console.log('layout in postuserlayout: ', layout);
   
   
   try {
     yield axios.put(`/api/user/buttonLayout/${action.category}`, layout)
+    yield put({type: 'FETCH_USER'})
     
   } catch (error) {
     console.log('Error on postUserLayout: ', error);

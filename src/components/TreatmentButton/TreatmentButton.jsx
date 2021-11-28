@@ -22,7 +22,7 @@ function TreatmentButton({ treatment, displayLast }) {
 
     // click handler
     const handleClick = () => {
-        console.log(treatment.procedure.toLowerCase(), ' clicked');
+        // console.log(treatment.procedure.toLowerCase(), ' clicked');
         setOpen(true)
 
     }

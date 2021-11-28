@@ -19,18 +19,29 @@ function TreatmentPage() {
 
     // grab events from store
     const treatments = useSelector(store => store.treatments)
-    const treatConfig = [14, 15, 16, 17, 43, 44, 45, 13, 24]
+    // const treatConfig = [14, 15, 16, 17, 43, 44, 45, 13, 24]
+    const user = useSelector(store => store.user)
+    const selectedCategory = `${category.category}`
+    const userTreatments = user[selectedCategory.toLowerCase()]
 
     const setConfig = () => {
-        let configArray = [];
-        for (let button of treatConfig) {
-            for (let tx of treatments) {
-                if (button == tx.id) {
-                    configArray.push(tx)
+        console.log('selectedCategory in setConfig: ', selectedCategory);
+        console.log('userTreatments in setConfig: ', userTreatments);
+        console.log('treatments in setConfig: ', treatments);
+        if (userTreatments) {
+            let configArray = [];
+            for (let button of userTreatments) {
+                for (let tx of treatments) {
+                    if (button == tx.id) {
+                        configArray.push(tx)
+                    }
                 }
             }
+            console.log('configArray: ', configArray);
+            return configArray
+        } else {
+            return treatments;
         }
-        return configArray
     }
 
     const txLayout = setConfig();
@@ -48,6 +59,17 @@ function TreatmentPage() {
             return false
         }
     }
+
+    const isCustomLayout = () => {
+        console.log('userTreatments: ', userTreatments);
+        if(txLayout) {
+            return userTreatments
+        } else {
+            return treatments;
+        }
+        
+    }
+    const treatmentLayout = isCustomLayout();
 
     return (
         <div>
