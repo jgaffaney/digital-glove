@@ -19,13 +19,30 @@ function TreatmentPage() {
 
     // grab events from store
     const treatments = useSelector(store => store.treatments)
+    const treatConfig = [14, 15, 16, 17, 43, 44, 45, 13, 24]
+
+    const setConfig = () => {
+        let configArray = [];
+        for (let button of treatConfig) {
+            for (let tx of treatments) {
+                if (button == tx.id) {
+                    configArray.push(tx)
+                }
+            }
+        }
+        return configArray
+    }
+
+    const txLayout = setConfig();
+    console.log('configArray as txlayout is: ', txLayout);
+
     console.log('txs in txpage:', treatments);
     useEffect(() => {
         dispatch({ type: 'FETCH_TREATMENTS', payload: category.category })
     }, [])
 
     const isMedication = () => {
-        if(category.category == 'Medication'){
+        if (category.category == 'Medication') {
             return true
         } else {
             return false
@@ -42,7 +59,7 @@ function TreatmentPage() {
             </Box>
             <Box sx={{ flexGrow: 1, width: '90%' }}>
                 <Grid container spacing={2} sx={{ m: '2%', justifyContent: 'center' }}>
-                    {treatments.map(treatment => {
+                    {txLayout.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>
                                 <TreatmentButton displayLast={isMedication()} key={treatment.id} treatment={treatment} />
