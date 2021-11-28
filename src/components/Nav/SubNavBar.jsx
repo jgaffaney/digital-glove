@@ -14,8 +14,6 @@ const Item = styled(Paper)(({ theme }) => ({
 function SubNavBar() {
 
 
-
-
     return (
         <div className='navBar'>
             <Stack direction='row' spacing={0} sx={{display:'flex', justifyContent: 'center', backgroundColor:'#f2f2f2' }}>

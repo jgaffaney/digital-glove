@@ -1,8 +1,10 @@
+import React from 'react';
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import {Snackbar} from '@mui/material';
+import MuiAlert from '@mui/material/Alert'
 
 // a reusable component to create a treatment button.  
 // pass in a treatment with at least id and name
@@ -15,13 +17,30 @@ function TreatmentButton({ treatment, displayLast }) {
     // grab data from the store
     const run = useSelector(store => store.currentRun)
     const runDetails = useSelector(store => store.runDetails)
+    const [open, setOpen] = useState(false)
+
 
     // click handler
     const handleClick = () => {
         console.log(treatment.procedure.toLowerCase(), ' clicked');
-        dispatch({ type: 'ADD_TX_EVENT', payload: run, treatment: treatment })
+        setOpen(true)
+
     }
 
+    const handleClose = (event) => {
+        console.log('event in handleClose: ', event);
+        if (!event) {
+            dispatch({ type: 'ADD_TX_EVENT', payload: run, treatment: treatment })
+        }
+        setOpen(false)
+    }
+
+    const action = (
+        <>
+            <Button sx={{color: 'orange'}} size="small" onClick={handleClose}>
+                UNDO
+            </Button>
+        </>)
     // a function to find the last time this treatment was given
     const findLast = () => {
         console.log('in findLast');
@@ -38,6 +57,10 @@ function TreatmentButton({ treatment, displayLast }) {
         return last;
     }
     const lastEvent = findLast();
+
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
 
     // make sure runDetails is always fresh
     useEffect(() => {
@@ -56,6 +79,18 @@ function TreatmentButton({ treatment, displayLast }) {
             {displayLast &&
                 <p>Last: {lastEvent}</p>
             }
+            <Snackbar
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                message={`${treatment.procedure} will be recorded.`}
+
+            ><Alert
+                action={action}
+                onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {treatment.procedure} will be recorded.
+                </Alert></Snackbar>
+
         </div>
     )
 }
