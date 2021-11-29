@@ -88,7 +88,7 @@ function TreatmentButton({ treatment, displayLast }) {
 
             <Snackbar
                 open={open}
-                autoHideDuration={2000}
+                autoHideDuration={1500}
                 onClose={handleClose}
                 message={`${treatment.procedure} will be recorded.`}
 

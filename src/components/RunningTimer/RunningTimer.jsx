@@ -1,9 +1,11 @@
 import { Interval, DateTime, Duration } from 'luxon';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 
 function RunningTimer() {
+
+    const dispatch = useDispatch();
 
     const [elapsedTime, setElapsedTime] = useState();
 
@@ -21,6 +23,7 @@ function RunningTimer() {
                 setElapsedTime(Duration.fromObject({milliseconds:endTime.minus(startTime.toMillis())}).toFormat('hh:mm:ss'))
         }, 100)
         return () => clearInterval(secTimer);
+        dispatch({type: 'FETCH_CURRENT_RUN'})
 
         },[])
 
