@@ -76,11 +76,11 @@ function TreatmentPage() {
             <SubNavBar />
             <RunningTimer />
             <CurrentTime />
-            <Box sx={{ flexGrow: 1, width: '90%' }}>
+            {/* <Box sx={{ flexGrow: 1, width: '100%', m:'1%' }}>
                 <Button onClick={() => history.goBack()}>Back</Button>
-            </Box>
-            <Box sx={{ flexGrow: 1, width: '90%' }}>
-                <Grid container spacing={2} sx={{ m: '2%', justifyContent: 'center' }}>
+            </Box> */}
+            <Box sx={{ flexGrow: 1, width: '100%' }}>
+                <Grid container rowSpacing={2} sx={{ justifyContent: 'center', marginBottom: '6%' }}>
                     {txLayout.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>
@@ -90,12 +90,12 @@ function TreatmentPage() {
                     })}
                 </Grid>
             </Box>
-            <Box sx={{ flexGrow: 1, width: '90%' }}>
-                <Grid container spacing={2} sx={{ m: '2%', justifyContent: 'center' }}>
-                    <Grid item xs={5}>
+            <Box sx={{ flexGrow: 1, width: '100%' }}>
+                <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'center', }} item xs={5}>
                         <ReviewTreatmentButton />
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'center', }} item xs={5}>
                         <EndCallButton />
                     </Grid>
                 </Grid>
