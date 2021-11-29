@@ -75,7 +75,7 @@ function SelectMode() {
                     </Grid>
                     {(typeof currentRun.id == 'number') && (
                         <>
-                            <Grid sx={{ jsutifyContent: 'center', m: 'auto' }} item xs={10}>
+                            <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
                                 <EndCallButton />
                             </Grid>
                         </>
