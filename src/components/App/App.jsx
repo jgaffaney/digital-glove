@@ -51,9 +51,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      {/* <div className='bg-img'>
+        <img src='shutterstock_1258334020.eps' alt="Star of Life" />
+        </div> */}
       <Router>
         <div>
           <Nav />
+          {/* <img id='bg-img' src='Star_of_life2.png' alt="Star of Life" /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
