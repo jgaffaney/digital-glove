@@ -28,7 +28,7 @@ function NewCallArrived() {
                 <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
                     <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
                         <Button
-                            sx={{ width: '200px', height: '75px', mt: '4%', mb: '4%' }}
+                            sx={{ width: '150px', height: '75px', mt: '4%', mb: '4%' }}
                             variant="contained"
                             onClick={handleNewCall}>
                             AT PATIENT
@@ -36,7 +36,7 @@ function NewCallArrived() {
                     </Grid>
                     <Grid sx={{ justifyContent: 'center', m: 'auto' }} item xs={10}>
                         <Button
-                            sx={{ width: '200px', height: '75px', mt: '4%', mb: '4%' }}
+                            sx={{ width: '150px', height: '75px', mt: '4%', mb: '4%' }}
                             variant='contained'
                             onClick={handleCancel}>
                             CANCELED / REASSIGNED
