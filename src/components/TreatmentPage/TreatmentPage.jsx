@@ -49,6 +49,7 @@ function TreatmentPage() {
 
     console.log('txs in txpage:', treatments);
     useEffect(() => {
+        dispatch({type: 'FETCH_CURRENT_RUN'})
         dispatch({ type: 'FETCH_TREATMENTS', payload: category.category })
     }, [])
 
@@ -80,7 +81,7 @@ function TreatmentPage() {
                 <Button onClick={() => history.goBack()}>Back</Button>
             </Box> */}
             <Box sx={{ flexGrow: 1, width: '100%' }}>
-                <Grid container spacing={2} sx={{ justifyContent: 'center', marginBottom: '6%' }}>
+                <Grid container spacing={1} sx={{ justifyContent: 'center', marginBottom: '6%' }}>
                     {txLayout.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>
@@ -91,7 +92,7 @@ function TreatmentPage() {
                 </Grid>
             </Box>
             <Box sx={{ flexGrow: 1, width: '100%' }}>
-                <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+                <Grid container spacing={1} sx={{ justifyContent: 'center' }}>
                     <Grid sx={{ width: '130px', height: '60px', justifyContent: 'center', }} item xs={5}>
                         <ReviewTreatmentButton />
                     </Grid>

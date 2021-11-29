@@ -81,7 +81,7 @@ function TreatmentButton({ treatment, displayLast }) {
                 </Grid>
                 <Grid item xs={6}>
                 {displayLast &&
-                    <div>Last: {lastEvent}</div>
+                    <div style={{width: '140px'}} >Last: {lastEvent}</div>
                 }
                 </Grid>
             </Grid>

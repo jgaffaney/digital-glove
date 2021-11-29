@@ -77,10 +77,10 @@ function Customize() {
                         label='Category'
                         onChange={handleChange}
                     >
-                        <MenuItem value={'airway'}>Airway</MenuItem>
-                        <MenuItem value={'chest'}>Chest</MenuItem>
-                        <MenuItem value={'access'}>Access</MenuItem>
-                        <MenuItem value={'medication'}>Medication</MenuItem>
+                        <MenuItem key={1} value={'airway'}>Airway</MenuItem>
+                        <MenuItem key={2} value={'chest'}>Chest</MenuItem>
+                        <MenuItem key={3} value={'access'}>Access</MenuItem>
+                        <MenuItem key={4} value={'medication'}>Medication</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
@@ -241,7 +241,7 @@ function Customize() {
                         >
                             {category.map(treatment => {
                                 return (
-                                    <MenuItem value={treatment.id}>{treatment.procedure}</MenuItem>
+                                    <MenuItem key={treatment.id} value={treatment.id}>{treatment.procedure}</MenuItem>
                                 )
                             })}
                         </Select>
@@ -250,7 +250,7 @@ function Customize() {
 
                 {/* </FormControl> */}
             </Box>
-            <Grid xs={6} sx={{ width: '100%', m:'auto'}}>
+            <Grid sx={{ width: '100%', m:'auto'}}>
             <Button onClick={handleClick} variant='contained'>Save Layout</Button>
             </Grid>
 
