@@ -80,7 +80,7 @@ function TreatmentPage() {
                 <Button onClick={() => history.goBack()}>Back</Button>
             </Box> */}
             <Box sx={{ flexGrow: 1, width: '100%' }}>
-                <Grid container rowSpacing={2} sx={{ justifyContent: 'center', marginBottom: '6%' }}>
+                <Grid container spacing={2} sx={{ justifyContent: 'center', marginBottom: '6%' }}>
                     {txLayout.map(treatment => {
                         return (
                             <Grid key={treatment.id} item xs={5}>

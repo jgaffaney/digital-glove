@@ -71,17 +71,17 @@ function TreatmentButton({ treatment, displayLast }) {
     console.log('displayLast: ', displayLast);
     return (
         <div>
-            <Grid rowSpacing={1}>
-                <Grid item>
+            <Grid rowSpacing={0}>
+                <Grid item xs={6}>
                 <Button
                     sx={{ width: '130px', height: '60px' }}
                     variant='contained'
                     onClick={handleClick}>{treatment.procedure}
                 </Button>
                 </Grid>
-                <Grid item>
+                <Grid item xs={6}>
                 {displayLast &&
-                    <p>Last: {lastEvent}</p>
+                    <div>Last: {lastEvent}</div>
                 }
                 </Grid>
             </Grid>
