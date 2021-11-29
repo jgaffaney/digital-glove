@@ -29,6 +29,9 @@ function SelectMode() {
 
     return (
         <div>
+            {(typeof currentRun.id == 'number') && (
+                <h2>You have a run open.  Click TX Menu to return to treatments.</h2>
+            )}
             <Box sx={{ flexGrow: 1, m: 'auto' }}>
                 <Grid container columnSpacing={{ xs: 6 }} sx={{ justifyContent: 'center', flexDirection: 'column' }}>
 
@@ -70,6 +73,14 @@ function SelectMode() {
                             Review Previous Calls
                         </Button>
                     </Grid>
+                    {(typeof currentRun.id == 'number') && (
+                        <>
+                            <Grid sx={{ jsutifyContent: 'center', m: 'auto' }} item xs={10}>
+                                <EndCallButton />
+                            </Grid>
+                        </>
+                    )}
+
                 </Grid>
             </Box>
         </div>

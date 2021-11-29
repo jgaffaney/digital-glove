@@ -6,7 +6,7 @@ function* fetchTreatments(action) {
     
     try {
         const response = yield axios.get(`/api/treatments/${category}`);
-        console.log('response: ', response.data);
+        console.log('fetch treatments response: ', response.data);
         
         yield put({type: 'SET_TREATMENTS', payload: response.data});
     } catch (error) {

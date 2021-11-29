@@ -58,4 +58,20 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.put('/buttonLayout/:category', rejectUnauthenticated, (req, res) => {
+  console.log('req.body in buttonlayout category:', req.body);
+  console.log('params in buttonlayout put: ', req.params.category);
+  const queryText = `
+  UPDATE "user"
+  SET ${req.params.category} = $1
+  WHERE id = $2;
+  `
+  const values = [req.body, req.user.id]
+  pool.query(queryText, values)
+    .then(response => {
+      console.log('response.rows from put buttonlayout: ', response.rows);
+      
+    })
+})
+
 module.exports = router;

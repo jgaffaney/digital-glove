@@ -4,10 +4,11 @@ import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  borderRadius: '0',
+  padding: theme.spacing(0),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  backgroundColor: '#00acb0',
+  backgroundColor: '#7f5539',
   width: '100%'
 }));
 

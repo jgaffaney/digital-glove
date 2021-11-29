@@ -16,7 +16,7 @@ function ReviewTreatmentButton() {
 
     return (
         <div>
-            <Button variant='contained' onClick={handleClick}>Review Treatment</Button>
+            <Button sx={{ width: '130px', height: '60px' }} variant='contained' onClick={handleClick}>Review Treatment</Button>
         </div>
 
     )

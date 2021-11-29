@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 import { useEffect, useState } from 'react';
-import {Snackbar} from '@mui/material';
+import { Snackbar, Box, Grid } from '@mui/material';
 import MuiAlert from '@mui/material/Alert'
 
 // a reusable component to create a treatment button.  
@@ -22,7 +22,7 @@ function TreatmentButton({ treatment, displayLast }) {
 
     // click handler
     const handleClick = () => {
-        console.log(treatment.procedure.toLowerCase(), ' clicked');
+        // console.log(treatment.procedure.toLowerCase(), ' clicked');
         setOpen(true)
 
     }
@@ -37,7 +37,7 @@ function TreatmentButton({ treatment, displayLast }) {
 
     const action = (
         <>
-            <Button sx={{color: 'orange'}} size="small" onClick={handleClose}>
+            <Button sx={{ color: 'orange' }} size="small" onClick={handleClose}>
                 UNDO
             </Button>
         </>)
@@ -71,17 +71,24 @@ function TreatmentButton({ treatment, displayLast }) {
     console.log('displayLast: ', displayLast);
     return (
         <div>
-            <Button
-                sx={{ width: '130px', height: '60px', justifyContent: '', }}
-                variant='contained'
-                onClick={handleClick}>{treatment.procedure}
-            </Button>
-            {displayLast &&
-                <p>Last: {lastEvent}</p>
-            }
+            <Grid rowSpacing={0}>
+                <Grid item xs={6}>
+                <Button
+                    sx={{ width: '130px', height: '60px' }}
+                    variant='contained'
+                    onClick={handleClick}>{treatment.procedure}
+                </Button>
+                </Grid>
+                <Grid item xs={6}>
+                {displayLast &&
+                    <div style={{width: '140px'}} >Last: {lastEvent}</div>
+                }
+                </Grid>
+            </Grid>
+
             <Snackbar
                 open={open}
-                autoHideDuration={2000}
+                autoHideDuration={1500}
                 onClose={handleClose}
                 message={`${treatment.procedure} will be recorded.`}
 

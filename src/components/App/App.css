@@ -7,7 +7,20 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  /* background-image: url('../../images/Star_of_life2.png');
+  background-position: center;
+  background-size: cover;
+  background-position-y: top 100px; */
 }
+
+/* .bg-img {
+  display: block;
+  position: absolute;
+  opacity: 0.6;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+} */
 
 img {
   display: inline-block;
@@ -32,7 +45,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #7f5539;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +68,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #7f5539;
   text-decoration: none;
 }
 
@@ -72,8 +85,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #7f5539;
+  color: #7f5539;
 }
 
 /* --------------------------------------------------------------------------------
@@ -110,3 +123,4 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+

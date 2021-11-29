@@ -19,7 +19,7 @@ function EndCallButton() {
     return (
         <Button
             sx={{ height: '60px', width: '130px' }}
-            color='error'
+            color='warning'
             variant='contained'
             onClick={handleClick}
         >
