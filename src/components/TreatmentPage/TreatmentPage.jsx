@@ -93,10 +93,10 @@ function TreatmentPage() {
             </Box>
             <Box sx={{ flexGrow: 1, width: '100%' }}>
                 <Grid container spacing={1} sx={{ justifyContent: 'center' }}>
-                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'center', }} item xs={6}>
+                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'space-evenly', }} item xs={5}>
                         <ReviewTreatmentButton />
                     </Grid>
-                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'center', }} item xs={6}>
+                    <Grid sx={{ width: '130px', height: '60px', justifyContent: 'space-evenly', }} item xs={5}>
                         <EndCallButton />
                     </Grid>
                 </Grid>

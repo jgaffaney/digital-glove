@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
     Box, InputLabel, MenuItem,
     FormControl, Select, Grid, Button
@@ -21,16 +22,31 @@ function Customize() {
     }
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const category = useSelector(store => store.treatments)
-    const user = useSelector(store=>store.user)
+    const user = useSelector(store => store.user)
 
     const [txCategory, setTxCategory] = useState('');
     const [buttonLayout, setButtonLayout] = useState(defaultButtonLayout);
 
     const options = category;
 
-
+    const hiddenFill = () => {
+        setTxCategory('medication')
+        setButtonLayout({
+            button1: 35,
+            button2: 18,
+            button3: 40,
+            button4: 22,
+            button5: 19,
+            button6: 21,
+            button7: 41,
+            button8: 42,
+            button9: 23
+        })
+        console.log('hiddenFill clicked');
+    }
 
     const handleChange = (e) => {
         setTxCategory(e.target.value)
@@ -55,6 +71,7 @@ function Customize() {
         // }
         // console.log('layout in handleclick: ', layout)
         dispatch({ type: 'POST_USER_LAYOUT', payload: buttonLayout, category: txCategory })
+        history.push('/home');
     }
 
     useEffect(() => {
@@ -64,8 +81,8 @@ function Customize() {
     return (
         <div>
             <div>User: {user.username} </div>
-            <Grid sx={{textAlign: 'center', width: '75%', m:'auto'}}>
-            <h2>Customize your button layout here</h2>
+            <Grid sx={{ textAlign: 'center', width: '75%', m: 'auto' }}>
+                <h2 onClick={hiddenFill}>Customize your button layout here</h2>
             </Grid>
             <Box>
                 <FormControl sx={{ display: 'flex', justifyContent: 'center', padding: '10px', width: '80%' }}>
@@ -84,7 +101,7 @@ function Customize() {
                     </Select>
                 </FormControl>
             </Box>
-            <Box sx={{marginLeft: '3%'}}>
+            <Box sx={{ marginLeft: '3%' }}>
                 {/* <FormControl> */}
                 <Grid container rowSpacing={1} columnSpacing={1}>
                     <Grid item xs={5}>
@@ -122,7 +139,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 3</InputLabel>
+                        <InputLabel>Button 3</InputLabel>
                         <Select
                             // labelId='button2'
                             sx={{ width: '130px', height: '60px' }}
@@ -139,7 +156,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 4</InputLabel>
+                        <InputLabel>Button 4</InputLabel>
 
                         <Select
                             // labelId='button2'
@@ -158,7 +175,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 5</InputLabel>
+                        <InputLabel>Button 5</InputLabel>
 
                         <Select
                             // labelId='button2'
@@ -176,7 +193,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 6</InputLabel>
+                        <InputLabel>Button 6</InputLabel>
 
                         <Select
                             // labelId='button2'
@@ -194,7 +211,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 7</InputLabel>
+                        <InputLabel>Button 7</InputLabel>
 
                         <Select
                             // labelId='button2'
@@ -212,7 +229,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 8</InputLabel>
+                        <InputLabel>Button 8</InputLabel>
 
                         <Select
                             // labelId='button2'
@@ -230,7 +247,7 @@ function Customize() {
                         </Select>
                     </Grid>
                     <Grid item xs={5}>
-                    <InputLabel>Button 9</InputLabel>
+                        <InputLabel>Button 9</InputLabel>
                         <Select
                             // labelId='button2'
                             sx={{ width: '130px', height: '60px', marginBottom: '8%' }}
@@ -250,8 +267,8 @@ function Customize() {
 
                 {/* </FormControl> */}
             </Box>
-            <Grid sx={{ width: '100%', m:'auto'}}>
-            <Button onClick={handleClick} variant='contained'>Save Layout</Button>
+            <Grid sx={{ width: '100%', m: 'auto' }}>
+                <Button onClick={handleClick} variant='contained'>Save Layout</Button>
             </Grid>
 
         </div>

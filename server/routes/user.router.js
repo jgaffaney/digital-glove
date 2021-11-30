@@ -70,6 +70,7 @@ router.put('/buttonLayout/:category', rejectUnauthenticated, (req, res) => {
   pool.query(queryText, values)
     .then(response => {
       console.log('response.rows from put buttonlayout: ', response.rows);
+      res.sendStatus(204);
       
     })
 })
