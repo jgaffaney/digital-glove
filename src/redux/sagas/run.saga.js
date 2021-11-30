@@ -8,7 +8,7 @@ function* beginRun(action) {
         console.log('action.payload.id: ', action.payload);
         
         const currentRun = yield axios.post('/api/run/begin', action.payload);
-        console.log('currentRun in beginRun: ', currentRun.data.rows[0].id);
+        console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
         yield axios.put('/api/run/currentRun', {run: currentRun.data.rows[0]})
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0]})
         const response = yield axios.get(`/api/run/${action.payload.id}`)
@@ -41,7 +41,7 @@ function* deleteRun(action) {
 
 function* fetchCurrentRun(action) {
     try {
-        const response = yield axios.get('/api/run/currentRun')
+        const response = yield axios.get('/api/run/currentRun');
         console.log('response in fetchCurrentRun: ', response);
         
         yield put({type: 'SET_CURRENT_RUN', payload: response.data})

@@ -73,15 +73,17 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         })
 })
 
-router.get('/currentRun', (req, res) => {
+router.get('/currentRun', rejectUnauthenticated, (req, res) => {
     console.log('req.user.id: ', req.user.id);
-    
+    console.log('in /currentRun get');
     const queryText = `
     SELECT * FROM currentRun
     WHERE user_id = $1
     `
     pool.query(queryText, [req.user.id])
         .then(response => {
+            console.log('response from get on currentRun: ', response);
+            
             res.send(response.rows)
         }).catch(err => {
             console.log('Error on get currentRun: ', err);
@@ -90,7 +92,7 @@ router.get('/currentRun', (req, res) => {
 })
 
 router.put('/currentRun', (req, res) => {
-    console.log('reg.body currentRun put: ', req.body);
+    console.log('reg.body in currentRun put: ', req.body);
     
     const queryText = `
     UPDATE currentRun
