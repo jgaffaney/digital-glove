@@ -7,20 +7,16 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  /* background-image: url('../../images/Star_of_life2.png');
-  background-position: center;
-  background-size: cover;
-  background-position-y: top 100px; */
 }
 
-/* .bg-img {
-  display: block;
-  position: absolute;
-  opacity: 0.6;
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: cover;
-} */
+.background {
+  opacity: 0.1;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  object-fit:cover;
+}
+
 
 img {
   display: inline-block;

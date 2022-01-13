@@ -73,38 +73,72 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         })
 })
 
-router.get('/currentRun', rejectUnauthenticated, (req, res) => {
-    console.log('req.user.id: ', req.user.id);
-    console.log('in /currentRun get');
-    const queryText = `
+router.get('/currentRun', rejectUnauthenticated, (req, res) =>{
+    console.log('in currentRun get');
+    const queryText =`
     SELECT * FROM currentRun
-    WHERE user_id = $1
+    WHERE user_id = $1;
     `
     pool.query(queryText, [req.user.id])
         .then(response => {
-            console.log('response from get on currentRun: ', response);
-            
+            console.log('response on get currentRun: ', response);
             res.send(response.rows)
-        }).catch(err => {
-            console.log('Error on get currentRun: ', err);
+        }).catch(err=> {
+            console.log('error on get currentRun: ', error);
             res.sendStatus(500)
         })
+    
 })
 
-router.put('/currentRun', (req, res) => {
-    console.log('reg.body in currentRun put: ', req.body);
+
+// router.get('/currentRun', rejectUnauthenticated, (req, res) => {
+//     console.log('req.user.id: ', req.user.id);
+//     console.log('in /currentRun get');
+//     const queryText = `
+//     SELECT * FROM currentRun
+//     WHERE user_id = $1
+//     `
+//     pool.query(queryText, [req.user.id])
+//         .then(response => {
+//             console.log('response from get on currentRun: ', response);
+            
+//             res.send(response.rows)
+//         }).catch(err => {
+//             console.log('Error on get currentRun: ', err);
+//             res.sendStatus(500)
+//         })
+// })
+
+// router.put('/currentRun', (req, res) => {
+//     console.log('reg.body in currentRun put: ', req.body);
     
+//     const queryText = `
+//     UPDATE currentRun
+//     SET "currentRun" = $1,
+//     "timestamp" = $2
+//     WHERE user_id = $3;
+//     `
+//     pool.query(queryText, [req.body.run.id, req.body.run.start_timestamp, req.user.id])
+//         .then(response => {
+//             res.sendStatus(200)
+//         }).catch(err => {
+//             console.log('error on currentRun put: ', err);
+//             res.sendStatus(500)
+//         })
+// })
+router.put('/currentRun', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in put/currentRun: ', req.body);
     const queryText = `
-    UPDATE currentRun
-    SET "currentRun" = $1,
-    "timestamp" = $2
-    WHERE user_id = $3;
+    UPDATE currentrun
+    SET "currentRun" = $1
+    WHERE user_id = $2;
     `
-    pool.query(queryText, [req.body.run.id, req.body.run.start_timestamp, req.user.id])
+    pool.query(queryText, [req.body.run.id, req.user.id])
         .then(response => {
-            res.sendStatus(200)
-        }).catch(err => {
-            console.log('error on currentRun put: ', err);
+            console.log('response.rows in put/currentRun: ', response.rows);
+            res.sendStatus(201)
+        }).catch(err=>{
+            console.log('Error on put/currentRun');
             res.sendStatus(500)
         })
 })

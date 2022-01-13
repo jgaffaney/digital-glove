@@ -1,4 +1,4 @@
-const defaultRun = {id: '', start_timestamp: ''}
+const defaultRun = 0
 
 const currentRunReducer = (state = defaultRun, action) => {
     switch(action.type) {
