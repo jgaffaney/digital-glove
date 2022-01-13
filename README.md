@@ -5,11 +5,10 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Screenshots](#screenshots)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -32,25 +31,28 @@ This web app is written on a Node.js and Express server.  These must be installe
 What do I need to install before I can run your project
 
 ### Installation
+
 1. Fork and clone the repository
 
-  2.`npm install`
+2. `npm install`
 
-  3.`npm run server`
+3.`npm run server`
 
-  4.`npm run client`
+4.`npm run client`
 
 ## Usage
 
 The app starts with the user selecting a new call.  When arriving at the patient's side, the user will click "At Patient" which will initiate a run in the database and be ready to record interventions.  From there, a user can select from one of 4 categories of treatment and then select a treatment.  Selecting the treatment will automatically record that treatment and timestamp and, for medications, display the time so the user can easily recall the time of the last administration
 
+
 ## License
 
 <a href="https://choosealicense.com/licenses/mit/"><img src="https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/mit.svg" height=40 />MIT License</a>
+
 ## Acknowledgements
 
-Thank you to the instructors at Prime Digital Academy, especially Dane Smith and Liz Kerber!  
+Who helped you make this project a reality? Friends? Family? Contributors? Instructors?
 
 ## Contacts
 
-<a href="https://www.linkedin.com/in/https://www.linkedin.com/in/john-gaffaney-15859179/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  <a href="mailto:john.gaffaney@icloud.com"><img src=https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/email_me_button_icon_151852.svg /></a>
+<a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  <a href="mailto:"><img src=https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/email_me_button_icon_151852.svg /></a>
