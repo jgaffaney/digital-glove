@@ -44,7 +44,9 @@ What do I need to install before I can run your project
 
 The app starts with the user selecting a new call.  When arriving at the patient's side, the user will click "At Patient" which will initiate a run in the database and be ready to record interventions.  From there, a user can select from one of 4 categories of treatment and then select a treatment.  Selecting the treatment will automatically record that treatment and timestamp and, for medications, display the time so the user can easily recall the time of the last administration
 
+## License
 
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/mit.svg" height=40 />MIT License</a>
 ## Acknowledgements
 
 Thank you to the instructors at Prime Digital Academy, especially Dane Smith and Liz Kerber!  
