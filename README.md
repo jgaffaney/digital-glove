@@ -47,7 +47,7 @@ The app starts with the user selecting a new call.  When arriving at the patient
 
 ## Find it Online
 
-The app is hosted on heroku at digital-glove.herokuapp.com.  Users can log in with username: Guest, pw: guest to look around and see how it works
+The app is hosted on heroku at <a href="digital-glove.herokuapp.com">Digital Glove</a>.  Users can log in with username: Guest, pw: guest to look around and see how it works
 
 ## License
 
