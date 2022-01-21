@@ -10,6 +10,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+- [Find it Online](#find-it-online)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 - [Contacts](#contacts)
@@ -44,6 +45,9 @@ What do I need to install before I can run your project
 
 The app starts with the user selecting a new call.  When arriving at the patient's side, the user will click "At Patient" which will initiate a run in the database and be ready to record interventions.  From there, a user can select from one of 4 categories of treatment and then select a treatment.  Selecting the treatment will automatically record that treatment and timestamp and, for medications, display the time so the user can easily recall the time of the last administration
 
+## Find it Online
+
+The app is hosted on heroku at digital-glove.herokuapp.com.  Users can log in with username: Guest, pw: guest to look around and see how it works
 
 ## License
 
