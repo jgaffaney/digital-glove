@@ -36,6 +36,11 @@ export interface ClearCurrentRun {
     type: typeof runTypes.CLEAR_CURRENT_RUN;
 }
 
+export interface SetRuns {
+    type: typeof runTypes.SET_RUNS;
+    payload: Run[]
+}
+
 export type TreatmentsActions = 
     | SetAllTreatments
     | SetCurrentTreatments
@@ -44,3 +49,4 @@ export type TreatmentsActions =
 export type RunsActions = 
     | SetCurrentRun
     | ClearCurrentRun
+    | SetRuns
