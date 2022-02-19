@@ -15,6 +15,13 @@ export interface SetCurrentTreatments {
     type: typeof treatmentTypes.SET_CURRENT_TREATMENT;
     payload: Treatment;
 }
+export interface SetTreatments {
+    type: typeof treatmentTypes.SET_TREATMENTS;
+    payload: Treatment;
+}
+
+
 export type TreatmentsActions = 
     | SetAllTreatments
     | SetCurrentTreatments
+    | SetTreatments 
