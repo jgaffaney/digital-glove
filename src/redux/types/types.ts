@@ -13,6 +13,12 @@ export interface Run {
     user_id?: number
 }
 
+export interface Event {
+    procedure: string,
+    timestamp: string,
+    id: number
+}
+
 export interface SetAllTreatments {
     type: typeof treatmentTypes.SET_ALL_TREATMENTS;
     payload: Treatment[];
@@ -38,7 +44,12 @@ export interface ClearCurrentRun {
 
 export interface SetRuns {
     type: typeof runTypes.SET_RUNS;
-    payload: Run[]
+    payload: Run[];
+}
+
+export interface SetRunDetails {
+    type: typeof runTypes.SET_RUN_DETAILS;
+    payload: Event[];
 }
 
 export type TreatmentsActions = 
@@ -50,3 +61,4 @@ export type RunsActions =
     | SetCurrentRun
     | ClearCurrentRun
     | SetRuns
+    | SetRunDetails
