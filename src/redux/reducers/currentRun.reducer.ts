@@ -1,6 +1,8 @@
-const defaultRun = {id: '', start_timestamp: ''}
+import { Run, RunsActions } from '../types/types';
 
-const currentRunReducer = (state = defaultRun, action) => {
+const defaultRun: Run = {id: 0, start_timestamp: '', end_timestamp: '', user_id: 0}
+
+const currentRunReducer = (state = defaultRun, action: RunsActions) => {
     switch(action.type) {
         case 'SET_CURRENT_RUN':
             return action.payload;
