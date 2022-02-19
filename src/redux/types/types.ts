@@ -1,5 +1,6 @@
 import { treatmentTypes } from "../ActionTypes/treatmentTypes";
 import { runTypes } from '../ActionTypes/runTypes';
+import { userTypes } from "../ActionTypes/userTypes";
 
 export interface Treatment {
     id: number;
@@ -17,6 +18,16 @@ export interface Event {
     procedure: string,
     timestamp: string,
     id: number
+}
+
+export interface User {
+    access: number[],
+    airway: number[],
+    chest: number[],
+    medication: number[],
+    clearance_level: number,
+    id: number,
+    username: string
 }
 
 export interface SetAllTreatments {
@@ -52,6 +63,15 @@ export interface SetRunDetails {
     payload: Event[];
 }
 
+export interface SetUser {
+    type: typeof userTypes.SET_USER;
+    payload: User;
+}
+
+export interface UnsetUser {
+    type: typeof userTypes.UNSET_USER;
+}
+
 export type TreatmentsActions = 
     | SetAllTreatments
     | SetCurrentTreatments
@@ -61,4 +81,8 @@ export type RunsActions =
     | SetCurrentRun
     | ClearCurrentRun
     | SetRuns
-    | SetRunDetails
+    | SetRunDetails;
+
+export type UserActions = 
+    | SetUser
+    | UnsetUser;
