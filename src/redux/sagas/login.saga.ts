@@ -1,8 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { LoginUser } from '../types/types'
 
 // worker Saga: will be fired on "LOGIN" actions
-function* loginUser(action) {
+function* loginUser(action: LoginUser ) {
   try {
     // clear any existing error on the login page
     yield put({ type: 'CLEAR_LOGIN_ERROR' });
@@ -20,7 +21,7 @@ function* loginUser(action) {
     // after the user has logged in
     // get the user information from the server
     yield put({ type: 'FETCH_USER' });
-  } catch (error) {
+  } catch (error: any) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
       // The 401 is the error status sent from passport
@@ -36,7 +37,7 @@ function* loginUser(action) {
 }
 
 // worker Saga: will be fired on "LOGOUT" actions
-function* logoutUser(action) {
+function* logoutUser() {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },

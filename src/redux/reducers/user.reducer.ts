@@ -21,6 +21,4 @@ const userReducer = (state = initialState, action: UserActions) => {
   }
 };
 
-// user will be on the redux state at:
-// state.user
 export default userReducer;

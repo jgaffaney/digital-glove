@@ -73,8 +73,21 @@ export interface UnsetUser {
     type: typeof userTypes.UNSET_USER;
 }
 
+export interface UserClear {
+    type: string;
+    payload?: string
+}
+export interface LoginUser {
+    type: string;
+    payload: { username: string, password: string };
+}
+
 export interface ClearLoginError {
     type: typeof errorTypes.CLEAR_LOGIN_ERROR;
+}
+
+export interface RegisterUser {
+    payload: { username: string, password: string }
 }
 
 export type TreatmentsActions = 
@@ -90,7 +103,9 @@ export type RunsActions =
 
 export type UserActions = 
     | SetUser
-    | UnsetUser;
+    | UserClear
+    | LoginUser
+    | UnsetUser
 
 export type ErrorActions = 
 {
