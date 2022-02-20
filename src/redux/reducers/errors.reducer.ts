@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
+import { errorTypes } from '../ActionTypes/errorTypes';
+import { ErrorActions } from '../types/types';
 
 // loginMessage holds the string that will display
 // on the login screen if there's an error
-const loginMessage = (state = '', action) => {
+
+const initialState: string = '';
+
+const loginMessage = (state = initialState, action: ErrorActions) => {
   switch (action.type) {
     case 'CLEAR_LOGIN_ERROR':
       return '';
@@ -19,7 +24,7 @@ const loginMessage = (state = '', action) => {
 
 // registrationMessage holds the string that will display
 // on the registration screen if there's an error
-const registrationMessage = (state = '', action) => {
+const registrationMessage = (state: string = '', action: ErrorActions) => {
   switch (action.type) {
     case 'CLEAR_REGISTRATION_ERROR':
       return '';

@@ -1,6 +1,7 @@
 import { treatmentTypes } from "../ActionTypes/treatmentTypes";
 import { runTypes } from '../ActionTypes/runTypes';
 import { userTypes } from "../ActionTypes/userTypes";
+import { errorTypes } from "../ActionTypes/errorTypes";
 
 export interface Treatment {
     id: number;
@@ -72,6 +73,10 @@ export interface UnsetUser {
     type: typeof userTypes.UNSET_USER;
 }
 
+export interface ClearLoginError {
+    type: typeof errorTypes.CLEAR_LOGIN_ERROR;
+}
+
 export type TreatmentsActions = 
     | SetAllTreatments
     | SetCurrentTreatments
@@ -86,3 +91,8 @@ export type RunsActions =
 export type UserActions = 
     | SetUser
     | UnsetUser;
+
+export type ErrorActions = 
+{
+    type: string;
+}
