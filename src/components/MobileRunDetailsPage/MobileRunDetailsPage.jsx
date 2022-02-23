@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MobileRunDetailsItem from '../MobileRunDetailsItem/MobileRunDetailsItem';
 import {
     TableContainer, Table, TableCell, TableHead,
-    TableRow, TableBody, Paper, Box, Button
+    TableRow, TableBody, Paper, Button
 } from '@mui/material';
 import { useHistory, useParams } from 'react-router';
 import { useEffect } from 'react';
@@ -17,15 +17,6 @@ function MobileRunDetailsPage() {
     const runNumber = useParams();
     console.log('runNumber: ', runNumber.run);
 
-    // const findRun = () => {
-    //     for(run of runs) {
-    //         if(run.id == runNumber) {
-    //             return run
-    //         }
-    //     }
-    // }
-
-    // const run = findRun();
     useEffect(()=> {
         dispatch({type: 'FETCH_RUN_DETAILS', payload: {id: runNumber.run}})
     }, [])

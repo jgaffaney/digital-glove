@@ -4,7 +4,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { DateTime } from 'luxon';
-import { confirm } from 'react-confirm-box';
+
 
 function MobileRunTableRow({run}) {
 
@@ -22,14 +22,6 @@ function MobileRunTableRow({run}) {
 
     // delete function with sweetalert confirmation
     const handleDelete = async () => {
-        // const options = {labels: {confirmable: 'OK'}}
-        // const result = await confirm("This will delete your run and cannot be reversed.  Are you sure?");
-        // if(result) {
-        //     dispatch({type: 'DELETE_RUN', payload: run.id, user})
-        //     confirm('Your run has been deleted', options)
-        // } else {
-        //     confirm('Your run has been saved', options);
-        // }
 
         MySwal.fire({
             title: <p>This will delete your run and cannot be reversed.  Are you sure?</p>,
