@@ -21,7 +21,6 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
 })
 
 router.get('/:category', rejectUnauthenticated, (req, res) => {
-    // console.log('req.body in treatmentsRouter get: ', req.params.category);
 
     const queryText = `
     SELECT * FROM events
@@ -29,7 +28,6 @@ router.get('/:category', rejectUnauthenticated, (req, res) => {
   `
     pool.query(queryText, [req.params.category])
         .then(response => {
-            // console.log('response on tx get: ', response);
             res.send(response.rows);
         }).catch(err => {
             console.log('Error on tx get: ', err);
@@ -75,7 +73,6 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    // console.log('req.body in put: ', req.body.treatment);
     
     const queryText = `
     UPDATE runs_events
@@ -84,10 +81,9 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     WHERE id = $3;
     `
     const values = [req.body.treatment, req.body.treatment.timestamp, req.params.id]
-    // console.log('values in put: ', values);
     
     pool.query(queryText, values)
-        .then(response => {
+        .then(() => {
             res.sendStatus(201)
         }).catch(err => {
             console.log('Error on treatment put: ', err);
