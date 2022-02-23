@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
+import { AnyAction } from 'redux';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
@@ -24,7 +25,7 @@ function* fetchUser() {
   }
 }
 
-function* postUserLayout(action) {
+function* postUserLayout(action: AnyAction ) {
   console.log('action in postUserLayout: ', action);
   let layout = [];
   for(let button in action.payload){
