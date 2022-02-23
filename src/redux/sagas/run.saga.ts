@@ -1,28 +1,29 @@
 import axios from 'axios';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { IRun } from '../models/IRun';
 import { BeginRun, DeleteRun, FetchRun } from '../types/types';
+
 
 const postRun = (action: BeginRun): any => {
     axios.post<IRun>('/api/run/begin', action)
 };
 
-const getRun = (action: number): any => {
-    axios.get<IRun[]>(`/api/run/${action}`)
+const getRun = (action: BeginRun): any => {
+    axios.get<IRun[]>(`/api/run/${action.payload.id}`)
 }
 
 
 
-function* beginRun(action: BeginRun): any {
+function* beginRun(action: BeginRun): ReturnType<typeof getRun> {
     try{
         console.log('action in beginRun: ', action);
         console.log('action.payload.id: ', action.payload);
         
-        const currentRun = yield axios.post<IRun>('/api/run/begin', action);
+        const currentRun = yield axios.get<IRun[]>(`/api/run/${action.payload.id}`);
         console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
         yield axios.put('/api/run/currentRun', {run: currentRun.data.rows[0]})
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0]})
-        const response = yield axios.get<IRun>(`/api/run/${action.payload.id}`);
+        const response = yield axios.get<IRun[]>(`/api/run/${action.payload.id}`);
         console.log('response.data: ', response.data);
         yield put({type: 'SET_RUNS', payload: response.data})
         action.history.push('/mainMenu')
@@ -73,6 +74,7 @@ function* fetchRunDetails(action: FetchRun): any {
         console.log('Error on fetchRunDetails: ', error);
         
     }
+}
 
 
 function* endCall(action: FetchRun) {

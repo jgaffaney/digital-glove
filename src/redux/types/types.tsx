@@ -65,16 +65,19 @@ export interface SetRunDetails {
 }
 
 export interface BeginRun {
+    type: string;
     payload: {id: number};
     history?: any;
 }
 
 export interface DeleteRun {
+    type: string
     payload: number;
-    user: any;
+    user: User;
 }
 
 export interface FetchRun {
+    type: string;
     payload: {id: number};
     history: any;
 }
