@@ -64,6 +64,21 @@ export interface SetRunDetails {
     payload: Event[];
 }
 
+export interface BeginRun {
+    payload: {id: number};
+    history?: any;
+}
+
+export interface DeleteRun {
+    payload: number;
+    user: any;
+}
+
+export interface FetchRun {
+    payload: {id: number};
+    history: any;
+}
+
 export interface SetUser {
     type: typeof userTypes.SET_USER;
     payload: User;
@@ -99,7 +114,8 @@ export type RunsActions =
     | SetCurrentRun
     | ClearCurrentRun
     | SetRuns
-    | SetRunDetails;
+    | SetRunDetails
+    | BeginRun;
 
 export type UserActions = 
     | SetUser
