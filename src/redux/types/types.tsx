@@ -105,6 +105,7 @@ export interface ClearLoginError {
 }
 
 export interface RegisterUser {
+    type: string;
     payload: { username: string, password: string }
 }
 
