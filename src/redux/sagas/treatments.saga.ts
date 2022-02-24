@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
+import { Treatment } from '../types/types';
 
 function* fetchTreatments(action: AnyAction) {
     const category = action.payload.toLowerCase();
     
     try {
-        const response = yield axios.get(`/api/treatments/${category}`);
+        const response: {data: Treatment[]} = yield axios.get(`/api/treatments/${category}`);
         console.log('fetch treatments response: ', response.data);
         
         yield put({type: 'SET_TREATMENTS', payload: response.data});
@@ -28,14 +29,10 @@ function* addTxEvent(action: AnyAction) {
     }
 }
 
-type response = {
-    data: 
-}
-
 function* fetchCurrentTreatment(action: AnyAction) {
     console.log('in fetchCurrentTx saga with action: ', action);
     try {
-        const response: {data: <Array>[]} = yield axios.get(`/api/treatments/current/${action.payload.id}`)
+        const response: {data: Treatment[]} = yield axios.get(`/api/treatments/current/${action.payload.id}`)
         yield put({type: 'SET_CURRENT_TREATMENT', payload: response.data[0]})
         action.history.push(`/treatmentReview/${action.payload.id}`)
     } catch (error) {
@@ -57,7 +54,7 @@ function* deleteTreatment(action: AnyAction) {
 
 function* fetchAllTreatments() {
     try {
-        const response: unknown = yield axios.get('api/treatments/all')
+        const response: {data: Treatment[]} = yield axios.get('api/treatments/all')
         yield put({type: 'SET_ALL_TREATMENTS', payload: response.data});
     } catch (error) {
         console.log('Error on fetchAllTreatments: ', error);
