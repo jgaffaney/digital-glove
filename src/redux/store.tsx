@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-
 import rootReducer from './reducers/_root.reducer'; // imports ./redux/reducers/index.js
 import rootSaga from './sagas/_root.saga'; // imports ./redux/sagas/index.js
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,13 +14,14 @@ const middlewareList = process.env.NODE_ENV === 'development' ?
   [sagaMiddleware, logger] :
   [sagaMiddleware];
 
-const store = createStore(
+const store = configureStore({
   // tells the saga middleware to use the rootReducer
   // rootSaga contains all of our other reducers
-  rootReducer,
+  reducer: rootReducer,
   // adds all middleware to our project including saga and logger
-  applyMiddleware(...middlewareList),
-);
+  middleware: middlewareList,
+  devTools: process.env.NODE_ENV !== 'production'
+});
 
 // tells the saga middleware to use the rootSaga
 // rootSaga contains all of our other sagas

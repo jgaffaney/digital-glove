@@ -4,7 +4,6 @@ import user from './user.reducer';
 import run from './run.reducer'
 import treatments  from './treatments.reducer';
 import currentRun from './currentRun.reducer';
-// import currentDetails from './currentRunDetails.reducer';
 import runDetails from './runDetails.reducer';
 import currentTreatment from './currentTreatment.reducer';
 import allTreatments from './allTreatments.reducer';
