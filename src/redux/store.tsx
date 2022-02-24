@@ -15,8 +15,6 @@ const middlewareList = process.env.NODE_ENV === 'development' ?
   [sagaMiddleware];
 
 const store = configureStore({
-  // tells the saga middleware to use the rootReducer
-  // rootSaga contains all of our other reducers
   reducer: rootReducer,
   // adds all middleware to our project including saga and logger
   middleware: middlewareList,
@@ -26,5 +24,9 @@ const store = configureStore({
 // tells the saga middleware to use the rootSaga
 // rootSaga contains all of our other sagas
 sagaMiddleware.run(rootSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

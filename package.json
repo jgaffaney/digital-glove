@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.39",
+    "@types/react-router-dom": "^5.3.3",
     "@types/redux-logger": "^3.0.9",
     "nodemon": "^2.0.4",
     "tslint-react": "^5.0.0",

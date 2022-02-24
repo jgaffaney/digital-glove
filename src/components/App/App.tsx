@@ -6,16 +6,10 @@ import {
   Switch,
 } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -27,14 +21,15 @@ import MainMenu from '../MainMenu/MainMenu';
 import TreatmentPage from '../TreatmentPage/TreatmentPage';
 import TreatmentReview from '../TreatmentReview/TreatmentReview';
 import Customize from '../Customize/Customize';
-
 import './App.css';
 import MobileRunDetailsPage from '../MobileRunDetailsPage/MobileRunDetailsPage';
+import { RootState } from '../../redux/reducers/_root.reducer';
+import { User } from '../../redux/types/types';
 
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user: User = useSelector((store: RootState) => store.user);
 
   const theme = createTheme({
     palette: {
