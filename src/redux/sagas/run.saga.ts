@@ -19,8 +19,8 @@ function* beginRun(action: BeginRun): ReturnType<typeof getRun> {
         console.log('action in beginRun: ', action);
         console.log('action.payload.id: ', action.payload);
         
-        const currentRun = yield axios.get<IRun[]>(`/api/run/${action.payload.id}`);
-        console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
+        const currentRun: {data: {rows: IRun[]}} = yield axios.get(`/api/run/${action.payload.id}`);
+        // console.log('currentRun id in beginRun: ', currentRun.data.rows[0].id);
         yield axios.put('/api/run/currentRun', {run: currentRun.data.rows[0]})
         yield put({type: 'SET_CURRENT_RUN', payload: currentRun.data.rows[0]})
         const response = yield axios.get<IRun[]>(`/api/run/${action.payload.id}`);
