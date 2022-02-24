@@ -85,16 +85,16 @@ function App() {
               // logged in shows UserPage else shows LoginPage
               exact
               path="/user"
+              component={SelectMode}
             >
-              <SelectMode />
             </ProtectedRoute>
 
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/info"
+              component={InfoPage}
             >
-              <InfoPage />
             </ProtectedRoute>
 
             <Route
@@ -113,41 +113,44 @@ function App() {
             <ProtectedRoute
               exact
               path='/mobileReview'
+              component={MobileCallReviewPage}
             >
-              <MobileCallReviewPage />
             </ProtectedRoute>
             <ProtectedRoute
               exact
               path='/select'
+              component={SelectMode}
             >
-              <SelectMode />
             </ProtectedRoute>
             <ProtectedRoute
               exact
               path='/mainMenu'
+              component={MainMenu}
             >
-              <MainMenu />
             </ProtectedRoute>
             <ProtectedRoute
               exact
               path='/treatmentPage/:category'
+              component={TreatmentPage}
             >
-              <TreatmentPage />
+              </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path='/mobileReview/:run'
+              component={MobileRunDetailsPage}
+              >
             </ProtectedRoute>
             <ProtectedRoute
               exact
-              path='/mobileReview/:run'>
-              <MobileRunDetailsPage />
-            </ProtectedRoute>
+              path='/treatmentReview/:id'
+              component={TreatmentReview}
+              >
+              </ProtectedRoute>
             <ProtectedRoute
               exact
-              path='/treatmentReview/:id'>
-              <TreatmentReview />
-            </ProtectedRoute>
-            <ProtectedRoute
-              exact
-              path='/customize'>
-              <Customize />
+              path='/customize'
+              component={Customize}>
+              {/* <Customize /> */}
             </ProtectedRoute>
 
             <Route
